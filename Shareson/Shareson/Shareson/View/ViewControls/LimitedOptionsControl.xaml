@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Shareson.View.ViewControls.LimitedOptionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Shareson.View.ViewControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="400">
+    <Grid Height="250" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" Name="MarginLeft"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="20" Name="MarginRight"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Path To Server Folder" Grid.Column="1" Grid.Row="0" MaxHeight="50">
+            <TextBox Text="{Binding PathToServerFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : D:\Nowy folder\A\"/>
+        </GroupBox>
+        <GroupBox Header="Port" Grid.Column="1" Grid.Row="1" MaxHeight="50">
+            <TextBox Text="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g :11000"/>
+        </GroupBox>
+        <GroupBox Header="DNS or IP" Grid.Column="1" Grid.Row="2" MaxHeight="50">
+            <TextBox Text="{Binding DNSorIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : (PC name : DESKTOP-SV0P890) or (IP : 49.250.45.49)" />
+        </GroupBox>
+
+    </Grid>
+</UserControl>
