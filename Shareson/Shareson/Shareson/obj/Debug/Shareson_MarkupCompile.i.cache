@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Serwer Treasures API\Shareson\Shareson\Shareson\obj\Debug\
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\
 Shareson
 none
 false
 DEBUG;TRACE
-D:\Serwer Treasures API\Shareson\Shareson\Shareson\App.xaml
-10-848474568
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\App.xaml
+11-7171753
 
-49810817507
-17-974570211
-CustomControls\Button1.xaml;CustomControls\Button2.xaml;View\LoginWindow.xaml;View\ViewControls\AccountControl.xaml;View\ViewControls\AccountOptionsControl.xaml;View\ViewControls\ContactControl.xaml;View\ViewControls\ImagesControl.xaml;View\MainWindow.xaml;View\ViewControls\LimitedOptionsControl.xaml;View\ViewControls\OptionsControl.xaml;
+52-280329143
+171021816450
+CustomControls\Button1.xaml;CustomControls\Button2.xaml;View\LoginWindow.xaml;View\ViewControls\AccountControl.xaml;View\ViewControls\AccountOptionsControl.xaml;View\ViewControls\ContactControl.xaml;View\ViewControls\CreateAccountControl.xaml;View\ViewControls\ImagesControl.xaml;View\MainWindow.xaml;View\ViewControls\LimitedOptionsControl.xaml;View\ViewControls\OptionsControl.xaml;
 
 False
 

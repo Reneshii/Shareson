@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
-using Shareson.Model;
-using Shareson.Repository.SupportMethods;
+﻿using Shareson.Model;
 using Shareson.Support.ClientHelper;
-using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace Shareson.Repository
@@ -32,7 +28,7 @@ namespace Shareson.Repository
 
             if (ConnectedToServer == true)
             {
-                jsonToSend = Support.RequestConstructor.CreateConnectionToAccountRequestAsJson(Enum.AvailableMethodsOnServer.LoginToAccount, Email, Password);
+                jsonToSend = Support.RequestConstructor.CreateConnectionToAccountRequestAsJson(Enum.AvailableMethodsOnServer.LoginToAccount, Email, Password, "");
                 client.Send(ClientHelperModel.clientSocket, jsonToSend);
                 client.Receive(ClientHelperModel.clientSocket);
 

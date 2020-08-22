@@ -1,7 +1,10 @@
 ﻿using Shareson.Model;
 using Shareson.Repository;
 using Shareson.Support;
+using Shareson.Support.ClientHelper;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shareson.ViewModel
@@ -12,6 +15,73 @@ namespace Shareson.ViewModel
         private LoginWindowRepository repository;
         private Action closeLoginWindow;
 
+        Task Task_UpdateServerStatus;
+        bool RapeatCheckStatus = true;
+
+        #region Command
+        public ICommand CallLogInControl
+        {
+            get
+            {
+                if(model._CallLogInControl == null)
+                {
+                    model._CallLogInControl = new RelayCommand(f => true, f =>
+                    {
+                        LoginWindowContentControl = new AccountControlViewModel(closeLoginWindow);
+                    });
+                }
+                return model._CallLogInControl;
+            }
+            set { }
+        }
+        public ICommand CallLimitedOptionsControl
+        {
+            get
+            {
+                if(model._CallLimitedOptionsControl == null)
+                {
+                    model._CallLimitedOptionsControl = new RelayCommand(f => true, f =>
+                    {
+                        LoginWindowContentControl = new OptionsControlViewModel();
+                    });
+                }
+                return model._CallLimitedOptionsControl;
+            }
+            set { }
+        }
+        public ICommand CallContactControl
+        {
+            get
+            {
+                if(model._CallContactControl == null)
+                {
+                    model._CallContactControl = new RelayCommand(f => true, f =>
+                    {
+                        LoginWindowContentControl = new ContactControlViewModel();
+                    });
+                }
+                return model._CallContactControl;
+            }
+            set { }
+        }
+        public ICommand CallCreateAccountControl
+        {
+            get
+            {
+                if(model._CallCreateAccountControl == null)
+                {
+                    model._CallCreateAccountControl = new RelayCommand(f => true, f =>
+                    {
+                        LoginWindowContentControl = new CreateAccountControl();
+                    });
+                }
+                return model._CallCreateAccountControl;
+            }
+            set { }
+        }
+        #endregion
+
+        #region Properties
         public object LoginWindowContentControl
         {
             get
@@ -24,75 +94,68 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
-        public ICommand CallAccountPage
+        public bool ServerStatus
         {
             get
             {
-                if(model._CallAccountPage == null)
-                {
-                    model._CallAccountPage = new RelayCommand(f => true, f =>
-                    {
-                        LoginWindowContentControl = new AccountControlViewModel(closeLoginWindow);
-                    });
-                }
-                return model._CallAccountPage;
+                return model._ServerStatus;
             }
             set
             {
-                model._CallAccountPage = value;
+                model._ServerStatus = value;
                 NotifyPropertyChanged();
             }
         }
-        public ICommand CallOptionsPage
+        public bool IsCreateAccountAvailable
         {
+
             get
             {
-                if(model._CallOptionsPage == null)
-                {
-                    model._CallOptionsPage = new RelayCommand(f => true, f =>
-                    {
-                        LoginWindowContentControl = new OptionsControlViewModel();
-                    });
-                }
-                return model._CallOptionsPage;
+                return model._IsCreateAccountAvailable;
             }
             set
             {
-                model._CallOptionsPage = value;
+                model._IsCreateAccountAvailable = value;
                 NotifyPropertyChanged();
             }
         }
-        public ICommand CallContactPage
-        {
-            get
-            {
-                if(model._CallContactPage == null)
-                {
-                    model._CallContactPage = new RelayCommand(f => true, f =>
-                    {
-                        LoginWindowContentControl = new ContactControlViewModel();
-                    });
-                }
-                return model._CallContactPage;
-            }
-            set
-            {
-                model._CallContactPage = value;
-                NotifyPropertyChanged();
-            }
-        }
+        #endregion
 
         public LoginWindowViewModel(Action closeLoginWindow)
         {
+            
             this.closeLoginWindow = closeLoginWindow;
             Initialize();
         }
         
         private void Initialize()
         {
+            ClientHelper.ContinueTestConnection = true;
+
             model = new LoginWindowModel();
             repository = new LoginWindowRepository();
             LoginWindowContentControl = new AccountControlViewModel(closeLoginWindow);
+            InitializeTasks();
+            Update();
+        }
+
+        private void InitializeTasks()
+        {
+            Task_UpdateServerStatus = new Task(() =>
+            {
+                while(ClientHelper.ContinueTestConnection == true)
+                {
+                    bool result = ClientHelper.TestConnection().Result;
+                    IsCreateAccountAvailable = result;
+                    ServerStatus = result;
+                    Thread.Sleep(10000);
+                }
+            });
+        }
+
+        private void Update()
+        {
+            Task_UpdateServerStatus.Start();
         }
     }
 }

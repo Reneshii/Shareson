@@ -1,6 +1,7 @@
 ﻿using Shareson.Model;
 using Shareson.Repository;
 using Shareson.Support;
+using Shareson.Support.ClientHelper;
 using Shareson.View;
 using System;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace Shareson.ViewModel
         AccountControlModel model;
         Action closeLoginWindow;
 
+        #region Command
         public ICommand LogInBtn
         {
             get
@@ -21,6 +23,7 @@ namespace Shareson.ViewModel
                 {
                     model._LogInBtn = new RelayCommand(f => true, async f =>
                     {
+                        ClientHelper.ContinueTestConnection = false;
                         //await repository.ConnectToAccount(Email, Password);
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.Show();
@@ -35,6 +38,9 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        #endregion
+
+        #region Properties
         public string Email
         {
             get
@@ -74,6 +80,7 @@ namespace Shareson.ViewModel
             }
             set { }
         }
+        #endregion
 
         public AccountControlViewModel(Action closeLoginWindow)
         {

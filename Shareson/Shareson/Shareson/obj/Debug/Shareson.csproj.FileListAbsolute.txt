@@ -84,3 +84,42 @@ D:\Serwer Treasures API\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\L
 D:\Serwer Treasures API\Shareson\Shareson\Shareson\obj\Debug\Shareson.csprojAssemblyReference.cache
 D:\Serwer Treasures API\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountOptionsControl.g.cs
 D:\Serwer Treasures API\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountOptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\Shareson.exe.config
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\CustomControls\Button1.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\CustomControls\Button2.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\LoginWindow.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountOptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ContactControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ImagesControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\MainWindow.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\LimitedOptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\OptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\App.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson_MarkupCompile.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson_MarkupCompile.lref
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\LoginWindow.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\AccountOptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ContactControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ImagesControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\MainWindow.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\LimitedOptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\OptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.g.resources
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.Properties.Resources.resources
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.csproj.GenerateResource.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.csproj.CoreCompileInputs.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.csproj.CopyComplete
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.csprojAssemblyReference.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\CreateAccountControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\CreateAccountControl.baml

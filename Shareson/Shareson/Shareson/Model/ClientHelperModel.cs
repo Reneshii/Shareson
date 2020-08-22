@@ -7,7 +7,6 @@ namespace Shareson.Model
     {
         public static Socket clientSocket { get; set; }
 
-        public bool Connected = false;
         public IPHostEntry ipHostInfo;
         public IPAddress ipAddress;
         public IPEndPoint remoteEP;

@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -87,27 +87,29 @@
     <Compile Include="Model\ForViews\AccountControlModel.cs" />
     <Compile Include="Model\AccountModel.cs" />
     <Compile Include="Model\ClientHelperModel.cs" />
-    <Compile Include="Model\ForViews\Excluded.cs" />
+    <Compile Include="Model\Excluded.cs" />
+    <Compile Include="Model\ForViews\CreateAccountModel.cs" />
     <Compile Include="Model\ForViews\ImagesControlModel.cs" />
-    <Compile Include="Model\ForViews\LoginWindowModel.cs" />
-    <Compile Include="Model\ForViews\MainWindowModel.cs" />
-    <Compile Include="Model\ForViews\OptionsControlModel.cs" />
-    <Compile Include="Model\ForViews\ScrollViewerItemsModel.cs" />
+    <Compile Include="Model\ForViews\OptionsModel.cs" />
+    <Compile Include="Model\LoginWindowModel.cs" />
+    <Compile Include="Model\MainWindowModel.cs" />
+    <Compile Include="Model\ScrollViewerItemsModel.cs" />
     <Compile Include="Repository\AccountControlRepository.cs" />
     <Compile Include="Repository\ImagesControlRepository.cs" />
     <Compile Include="Repository\LoginWindowRepository.cs" />
     <Compile Include="Repository\MainWindowRepository.cs" />
-    <Compile Include="Repository\OptionsControlRepository.cs" />
+    <Compile Include="Repository\OptionsRepository.cs" />
     <Compile Include="Support\ExcludedExtensions.cs" />
     <Compile Include="Support\ByteToFile.cs" />
     <Compile Include="Support\ClientHelper.cs" />
     <Compile Include="Support\ConvertImage.cs" />
-    <Compile Include="Support\Log.cs" />
+    <Compile Include="Support\InfoLog.cs" />
     <Compile Include="Support\Property_Changed.cs" />
     <Compile Include="Support\RelayCommand.cs" />
     <Compile Include="ViewModel\AccountControlViewModel.cs" />
     <Compile Include="ViewModel\AccountOptionsControlViewModel.cs" />
     <Compile Include="ViewModel\ContactControlViewModel.cs" />
+    <Compile Include="ViewModel\CreateAccountControl.cs" />
     <Compile Include="ViewModel\ImagesControlViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -123,6 +125,9 @@
     </Compile>
     <Compile Include="View\ViewControls\ContactControl.xaml.cs">
       <DependentUpon>ContactControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewControls\CreateAccountControl.xaml.cs">
+      <DependentUpon>CreateAccountControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewControls\ImagesControl.xaml.cs">
       <DependentUpon>ImagesControl.xaml</DependentUpon>
@@ -154,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewControls\ContactControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewControls\CreateAccountControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

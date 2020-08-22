@@ -6,7 +6,6 @@
 
     <Style  x:Key="Button1" TargetType="Button">
         <Setter Property="MaxHeight" Value="30"/>
-        <!--<Setter Property="MaxWidth" Value="90"/>-->
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -25,10 +24,13 @@
                         </Border.Background>
                         <ContentPresenter 
                             Content="{TemplateBinding Content}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False ">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <StopStoryboard BeginStoryboardName="LeaveAreaAndClick"/>
@@ -59,7 +61,7 @@
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
-                        
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>

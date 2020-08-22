@@ -8,7 +8,7 @@ namespace Shareson.ViewModel
     public class MainWindowViewModel : Property_Changed
     {
         MainWindowModel model;
-        OptionsControlModel optionsModel;
+        OptionsModel optionsModel;
 
         MainWindowRepository repository;
 
@@ -101,7 +101,7 @@ namespace Shareson.ViewModel
         public void Initialize()
         {
             model = new MainWindowModel();
-            optionsModel = new OptionsControlModel();
+            optionsModel = new OptionsModel();
             repository = new MainWindowRepository();
             OptionsControlViewModel = new OptionsControlViewModel();
             imagesViewModel = new ImagesControlViewModel();

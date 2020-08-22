@@ -9,5 +9,6 @@
         GetImagesList,
         LoginToAccount,
         GetAccountInfo,
+        CreateAccount,
     }
 }

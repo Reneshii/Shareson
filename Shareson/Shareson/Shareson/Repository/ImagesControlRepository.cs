@@ -13,10 +13,9 @@ namespace Shareson.Repository
     {
         ClientHelper clientHelper = new ClientHelper();
 
-        Log errorLog = new Log(Properties.Settings.Default.LogsFilePath);
+        InfoLog errorLog = new InfoLog(Properties.Settings.Default.LogsFilePath);
 
         public bool IsMethodInProgress = false;
-
 
         async Task<bool> ISocketOnly.StartConnect()
         {
@@ -25,7 +24,7 @@ namespace Shareson.Repository
 
         async Task<ObservableCollection<ScrollViewerItemsModel>> ISocketOnly.GetSingleImage(string PathToDirectory, string FileName, string[] ExcludedExtensions = null)
         {
-            ObservableCollection<ScrollViewerItemsModel> Result = new ObservableCollection<ScrollViewerItemsModel>();
+            //ObservableCollection<ScrollViewerItemsModel> Result = new ObservableCollection<ScrollViewerItemsModel>();
             string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetImage, PathToDirectory, FileName, ExcludedExtensions);
 
 

@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Models="clr-namespace:Shareson.ViewModel"
         xmlns:Views="clr-namespace:Shareson.View.ViewControls"
-        xmlns:local="clr-namespace:Shareson.View"
         mc:Ignorable="d"
-        Title="LoginPanel" Height="300" Width="450">
+        Title="LoginPanel" Height="300" Width="500">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -19,10 +18,13 @@
                 <Views:AccountControl/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type Models:OptionsControlViewModel}">
-                <Views:OptionsControl/>
+                <Views:LimitedOptionsControl/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type Models:ContactControlViewModel}">
                 <Views:ContactControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Models:CreateAccountControl}">
+                <Views:CreateAccountControl/>
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
@@ -46,10 +48,12 @@
         </StackPanel>
 
         <StackPanel Background="#003B53" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <Button Content="Log In"  Command="{Binding CallAccountPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
-            <Button Content="Options" Command="{Binding CallOptionsPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
-            <Button Content="Contact" Command="{Binding CallContactPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
+
+            <!--<Label Content="{Binding ServerStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>-->
         </StackPanel>
-       
+        <Button Content="Log In"  Command="{Binding CallLogInControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="100" Grid.Column="0" Grid.Row="4"/>
+        <Button Content="Create Account" Command="{Binding CallCreateAccountControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" IsEnabled="{Binding IsCreateAccountAvailable, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Width="100" Grid.Column="1" Grid.Row="4"/>
+        <Button Content="Options" Command="{Binding CallLimitedOptionsControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="100" Grid.Column="2" Grid.Row="4"/>
+        <Button Content="Contact" Command="{Binding CallContactControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="100" Grid.Column="3" Grid.Row="4"/>
     </Grid>
 </Window>

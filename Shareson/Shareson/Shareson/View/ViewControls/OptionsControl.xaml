@@ -57,7 +57,7 @@
             </ListBox>
 
         </GroupBox>
-        <Button Content="Save" Command="{Binding SaveSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button2}" Grid.Column="3" Grid.Row="6" Height="50"/>
+        <Button Content="Save" Command="{Binding SaveSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button2}" Grid.Column="3" Grid.Row="5" Height="50"/>
 
     </Grid>
 </UserControl>

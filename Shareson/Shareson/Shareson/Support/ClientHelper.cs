@@ -1,20 +1,19 @@
 ﻿using Shareson.Model;
-using Shareson.Repository.SupportMethods;
 using System;
-using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Windows;
+using System.Threading.Tasks;
 
 namespace Shareson.Support.ClientHelper
 {
     public class ClientHelper 
     {
-        public ClientHelperModel model;
-        Log errorLog = new Log(Properties.Settings.Default.LogsFilePath);
+        InfoLog errorLog = new InfoLog(Properties.Settings.Default.LogsFilePath);
 
+        public ClientHelperModel model;
+        
         ManualResetEvent connectDone = new ManualResetEvent(false);
         ManualResetEvent sendDone = new ManualResetEvent(false);
         ManualResetEvent receiveDone = new ManualResetEvent(false);
@@ -45,29 +44,68 @@ namespace Shareson.Support.ClientHelper
             }
         }
 
+        public static bool ContinueTestConnection;
+        private static ClientHelperModel testModel = new ClientHelperModel();
+        public static async Task<bool> TestConnection()
+        {
+            bool test;
+            Socket socket;
+
+            try
+            {
+                testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); // Add textBox to add DNS;
+                testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
+                testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); // Add textBox to add PORT;
+
+                socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+                socket.Connect(testModel.remoteEP);
+
+                if (socket.Connected)
+                {
+                    socket.Disconnect(false);
+                    test = true;
+                }
+                else
+                {
+                    test = false;
+                }
+                return test;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public void DisconnectFromServer(Socket socket)
+        {
+            if(socket.Connected)
+            {
+                socket.Disconnect(false);
+            }
+            socket.Dispose();
+        }
+
         private void ConnectCallBack(IAsyncResult AR)
         {
             try
             {
-                Socket client = (Socket)AR.AsyncState;
-                client.EndConnect(AR);
+                ClientHelperModel.clientSocket = (Socket)AR.AsyncState;
+                ClientHelperModel.clientSocket.EndConnect(AR);
+                //Socket client = (Socket)AR.AsyncState;
+                //client.EndConnect(AR);
 #if DEBUG
-                MessageBox.Show("Client connected to : " + client.RemoteEndPoint.ToString());
+                //MessageBox.Show("Client connected to : " + client.RemoteEndPoint.ToString());
 #endif
 #if !DEBUG
                 MessageBox.Show("Connected to server");
 #endif
-                model.Connected = true;
                 connectDone.Set();
             }
             catch(Exception e)
             {
-                
                 connectDone.Set();
-                connectDone.Reset();
-                errorLog.Add(e.ToString());
-                MessageBox.Show("Server refuse connection. See logs file for more information.");
-                return;
             }
         }
 

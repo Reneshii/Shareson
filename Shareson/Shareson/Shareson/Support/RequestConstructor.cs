@@ -3,7 +3,7 @@ using Shareson.Model;
 
 namespace Shareson.Support
 {
-    public class RequestConstructor
+    public static class RequestConstructor
     {
         private class JsonModel
         {
@@ -12,14 +12,17 @@ namespace Shareson.Support
             public string FileName;
             public string[] ExcludedExtensions;
         }
-        public static string CreateConnectionToAccountRequestAsJson(AvailableMethodsOnServer Method, string Email, string Password)
+        public static string CreateConnectionToAccountRequestAsJson(AvailableMethodsOnServer Method, string Email, string Login, string Password, string Name = null, string Surname = null)
         {
             string ServerMethod = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method);
 
             AccountModel model = new AccountModel()
             {
+                Login = Login,
                 Email = Email,
-                Password = Password
+                Password = Password,
+                Name = Name,
+                Surname = Surname,
             };
 
             string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + Newtonsoft.Json.JsonConvert.SerializeObject(model);
@@ -39,5 +42,6 @@ namespace Shareson.Support
             jsonRequest += "<EOS>";
             return jsonRequest;
         }
+
     }
 }

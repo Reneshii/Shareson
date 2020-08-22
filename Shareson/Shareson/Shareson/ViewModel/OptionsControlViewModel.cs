@@ -8,9 +8,10 @@ namespace Shareson.ViewModel
 {
     public class OptionsControlViewModel : Property_Changed
     {
-        private OptionsControlRepository repository;
-        private OptionsControlModel model;
+        private OptionsRepository repository;
+        private OptionsModel model;
 
+        #region Command
         public ICommand SaveSettings
         {
             get
@@ -26,6 +27,9 @@ namespace Shareson.ViewModel
             }
             set { }
         }
+        #endregion
+
+        #region Properties
         public string PathToServerFolder
         {
             get
@@ -98,20 +102,21 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        #endregion
 
         public OptionsControlViewModel()
         {
             Initialize();
             InitialExecute();
         }
-        public OptionsControlModel ReloadSettings()
+        public OptionsModel ReloadSettings()
         {
             return repository.LoadSettings();
         }
         private void Initialize()
         {
-            repository = new OptionsControlRepository();
-            model = new OptionsControlModel();
+            repository = new OptionsRepository();
+            model = new OptionsModel();
         }
         private void InitialExecute()
         {

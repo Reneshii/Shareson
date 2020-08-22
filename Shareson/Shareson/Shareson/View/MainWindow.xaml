@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:Views="clr-namespace:Shareson.View.ViewControls"
-        xmlns:Models="clr-namespace:Shareson.ViewModel"
+        xmlns:ViewModels="clr-namespace:Shareson.ViewModel"
         Title="Shareson" Height="600" Width="800" 
         WindowStyle="None" ResizeMode="NoResize">
         <!--AllowsTransparency="True" Background="Transparent"  ResizeMode="NoResize" -->
@@ -17,16 +17,16 @@
                 <ResourceDictionary Source="/CustomControls/Button1.xaml"/>
                 <ResourceDictionary Source="/CustomControls/Button2.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type Models:ImagesControlViewModel}">
+            <DataTemplate DataType="{x:Type ViewModels:ImagesControlViewModel}">
                 <Views:ImagesControl/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type Models:OptionsControlViewModel}">
+            <DataTemplate DataType="{x:Type ViewModels:OptionsControlViewModel}">
                 <Views:OptionsControl/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type Models:ContactControlViewModel}">
+            <DataTemplate DataType="{x:Type ViewModels:ContactControlViewModel}">
                 <Views:ContactControl/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type Models:AccountOptionsControlViewModel}">
+            <DataTemplate DataType="{x:Type ViewModels:AccountOptionsControlViewModel}">
                 <Views:AccountOptionsControl/>
             </DataTemplate>
         </ResourceDictionary>

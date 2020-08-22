@@ -27,19 +27,7 @@ namespace Shareson.Repository.SupportMethods
             bitmap.EndInit();
 
             bitmap.Freeze();
-            //using (MemoryStream ms = new MemoryStream(data,0,data.Length))
-            //{
-            //    ms.Position = 0;
-            //    bitmap.BeginInit();
-            //    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            //    bitmap.StreamSource = ms;
-            //    bitmap.EndInit();
-            //    ms.Close();
-            //    ms.Dispose();
-            //    bitmap.Freeze();
-            //}
 
-            //Info.Add("File size :" + Length.ToString() +"KB");
             return bitmap;
         }
         

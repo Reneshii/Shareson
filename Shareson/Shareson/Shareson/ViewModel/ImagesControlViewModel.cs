@@ -13,7 +13,7 @@ namespace Shareson.ViewModel
     public class ImagesControlViewModel : Property_Changed
     {
         ImagesControlModel model;
-        OptionsControlModel optionsModel;
+        OptionsModel optionsModel;
 
         ISocketOnly repositoryOnlySocket;
 
@@ -233,8 +233,9 @@ namespace Shareson.ViewModel
         #endregion
 
         #region Methods
-        public void ReloadSettings(OptionsControlModel model)
+        public void ReloadSettings(OptionsModel model)
         {
+            DirectoryPath = model._PathToServerFolder;
             this.optionsModel = model;
         }
 
