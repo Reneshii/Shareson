@@ -28,7 +28,7 @@ namespace Shareson.Repository
 
             if (ConnectedToServer == true)
             {
-                jsonToSend = Support.RequestConstructor.CreateConnectionToAccountRequestAsJson(Enum.AvailableMethodsOnServer.LoginToAccount, Email, Password, "");
+                jsonToSend = Support.RequestConstructor.CreateAccountRequestAsJson(Enum.AvailableMethodsOnServer.LoginToAccount, Email, "" , Password);
                 client.Send(ClientHelperModel.clientSocket, jsonToSend);
                 client.Receive(ClientHelperModel.clientSocket);
 

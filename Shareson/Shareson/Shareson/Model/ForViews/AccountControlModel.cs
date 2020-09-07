@@ -11,6 +11,7 @@ namespace Shareson.Model
         public string _Email { get; set; }
         public string _ID { get; set; }
         public bool _Logged { get; set; }
+        public bool _LogInEnable { get; set; }
         public ICommand _LogInBtn { get; set; }
     }
 }

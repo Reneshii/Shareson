@@ -1,6 +1,4 @@
-﻿
-
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Shareson.Model.ForViews
 {
@@ -11,5 +9,8 @@ namespace Shareson.Model.ForViews
         public string _Login { get; set; }
         public string _Email { get; set; }
         public string _Password { get; set; }
+        public string _ErrorLogin { get; set; }
+        public string _ErrorPassword { get; set; }
+        public string _ErrorEmail { get; set; }
     }
 }

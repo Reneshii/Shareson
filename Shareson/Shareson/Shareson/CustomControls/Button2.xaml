@@ -7,9 +7,6 @@
     <Color x:Key="DarkBlue" A="100" R="0" G="59" B="83"/>
 
     <Style  x:Key="Button2" TargetType="Button">
-        
-        <Setter Property="MaxHeight" Value="30"/>
-        <!--<Setter Property="MaxWidth" Value="90"/>-->
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="White"/>
@@ -32,6 +29,9 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False ">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="EnterNoClick">

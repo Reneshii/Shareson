@@ -95,6 +95,7 @@
     <Compile Include="Model\MainWindowModel.cs" />
     <Compile Include="Model\ScrollViewerItemsModel.cs" />
     <Compile Include="Repository\AccountControlRepository.cs" />
+    <Compile Include="Repository\CreateAccountControlRepository.cs" />
     <Compile Include="Repository\ImagesControlRepository.cs" />
     <Compile Include="Repository\LoginWindowRepository.cs" />
     <Compile Include="Repository\MainWindowRepository.cs" />
@@ -109,7 +110,7 @@
     <Compile Include="ViewModel\AccountControlViewModel.cs" />
     <Compile Include="ViewModel\AccountOptionsControlViewModel.cs" />
     <Compile Include="ViewModel\ContactControlViewModel.cs" />
-    <Compile Include="ViewModel\CreateAccountControl.cs" />
+    <Compile Include="ViewModel\CreateAccountControlViewModel.cs" />
     <Compile Include="ViewModel\ImagesControlViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

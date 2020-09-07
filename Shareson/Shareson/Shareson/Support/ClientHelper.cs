@@ -53,24 +53,32 @@ namespace Shareson.Support.ClientHelper
 
             try
             {
-                testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); // Add textBox to add DNS;
-                testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
-                testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); // Add textBox to add PORT;
-
-                socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-                socket.Connect(testModel.remoteEP);
-
-                if (socket.Connected)
+                if(ContinueTestConnection == true)
                 {
-                    socket.Disconnect(false);
-                    test = true;
+                    testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); // Add textBox to add DNS;
+                    testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
+                    testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); // Add textBox to add PORT;
+
+                    socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                    socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+                    socket.Connect(testModel.remoteEP);
+
+                    if (socket.Connected)
+                    {
+                        socket.Disconnect(false);
+                        test = true;
+                    }
+                    else
+                    {
+                        test = false;
+                    }
+                    return test;
                 }
                 else
                 {
-                    test = false;
+                    return false;
                 }
-                return test;
+                
             }
             catch(Exception e)
             {
@@ -109,13 +117,22 @@ namespace Shareson.Support.ClientHelper
             }
         }
 
-        public void Send(Socket client , string data)
+        public void Send(Socket client , string data, bool closeSocket = false)
         {
             try
             {
-                byte[] buffer = Encoding.UTF8.GetBytes(data);
-                client.BeginSend(buffer, 0, buffer.Length, 0, new AsyncCallback(SendCallBack), client);
-                sendDone.WaitOne();
+                if(closeSocket == false)
+                {
+                    byte[] buffer = Encoding.UTF8.GetBytes(data);
+                    client.BeginSend(buffer, 0, buffer.Length, 0, new AsyncCallback(SendCallBack), client);
+                    sendDone.WaitOne();
+                }
+                else
+                {
+                    client.Disconnect(true);
+                    client.Close();
+                }
+
             }
             catch (Exception e)
             {

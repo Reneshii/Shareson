@@ -10,5 +10,6 @@ namespace Shareson.Model
         public string Password { get; set; }
         public string ID { get; set; }
         public bool LoggedIn { get; set; }
+        public string Message { get; set; }
     }
 }

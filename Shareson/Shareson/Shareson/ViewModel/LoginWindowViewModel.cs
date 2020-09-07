@@ -15,8 +15,9 @@ namespace Shareson.ViewModel
         private LoginWindowRepository repository;
         private Action closeLoginWindow;
 
+
+        AccountControlViewModel AccountControlViewModel;
         Task Task_UpdateServerStatus;
-        bool RapeatCheckStatus = true;
 
         #region Command
         public ICommand CallLogInControl
@@ -27,7 +28,8 @@ namespace Shareson.ViewModel
                 {
                     model._CallLogInControl = new RelayCommand(f => true, f =>
                     {
-                        LoginWindowContentControl = new AccountControlViewModel(closeLoginWindow);
+                        AccountControlViewModel = new AccountControlViewModel(closeLoginWindow);
+                        LoginWindowContentControl = AccountControlViewModel;
                     });
                 }
                 return model._CallLogInControl;
@@ -72,7 +74,7 @@ namespace Shareson.ViewModel
                 {
                     model._CallCreateAccountControl = new RelayCommand(f => true, f =>
                     {
-                        LoginWindowContentControl = new CreateAccountControl();
+                        LoginWindowContentControl = new CreateAccountControlViewModel();
                     });
                 }
                 return model._CallCreateAccountControl;
@@ -123,7 +125,6 @@ namespace Shareson.ViewModel
 
         public LoginWindowViewModel(Action closeLoginWindow)
         {
-            
             this.closeLoginWindow = closeLoginWindow;
             Initialize();
         }
@@ -134,7 +135,8 @@ namespace Shareson.ViewModel
 
             model = new LoginWindowModel();
             repository = new LoginWindowRepository();
-            LoginWindowContentControl = new AccountControlViewModel(closeLoginWindow);
+            AccountControlViewModel = new AccountControlViewModel(closeLoginWindow);
+            LoginWindowContentControl = AccountControlViewModel;
             InitializeTasks();
             Update();
         }
@@ -143,13 +145,19 @@ namespace Shareson.ViewModel
         {
             Task_UpdateServerStatus = new Task(() =>
             {
-                while(ClientHelper.ContinueTestConnection == true)
+                do
                 {
                     bool result = ClientHelper.TestConnection().Result;
                     IsCreateAccountAvailable = result;
                     ServerStatus = result;
-                    Thread.Sleep(10000);
+
+                    if(AccountControlViewModel != null)
+                    {
+                        AccountControlViewModel.LogInEnable = result;
+                    }
+                    Thread.Sleep(5000);
                 }
+                while (ClientHelper.ContinueTestConnection == true);
             });
         }
 

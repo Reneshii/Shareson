@@ -1,5 +1,4 @@
-﻿
-namespace Shareson.Model
+﻿namespace Shareson.Model
 {
     public class Excluded
     {

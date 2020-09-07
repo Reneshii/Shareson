@@ -24,7 +24,7 @@ namespace Shareson.ViewModel
                     model._LogInBtn = new RelayCommand(f => true, async f =>
                     {
                         ClientHelper.ContinueTestConnection = false;
-                        //await repository.ConnectToAccount(Email, Password);
+                        await repository.ConnectToAccount(Email, Password);
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.Show();
                         closeLoginWindow.Invoke();
@@ -65,20 +65,17 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
-        private bool Login_Password
+        public bool LogInEnable
         {
             get
             {
-                if(!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return model._LogInEnable;
             }
-            set { }
+            set
+            {
+                model._LogInEnable = value;
+                NotifyPropertyChanged();
+            }
         }
         #endregion
 

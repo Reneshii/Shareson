@@ -1,4 +1,5 @@
-﻿using Shareson.Enum;
+﻿using Newtonsoft.Json;
+using Shareson.Enum;
 using Shareson.Model;
 
 namespace Shareson.Support
@@ -12,7 +13,7 @@ namespace Shareson.Support
             public string FileName;
             public string[] ExcludedExtensions;
         }
-        public static string CreateConnectionToAccountRequestAsJson(AvailableMethodsOnServer Method, string Email, string Login, string Password, string Name = null, string Surname = null)
+        public static string CreateAccountRequestAsJson(AvailableMethodsOnServer Method, string Email, string Login, string Password, string Name = null, string Surname = null)
         {
             string ServerMethod = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method);
 
@@ -25,7 +26,7 @@ namespace Shareson.Support
                 Surname = Surname,
             };
 
-            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + JsonConvert.SerializeObject(model);
             jsonRequest += "<EOS>";
             return jsonRequest;
         }
@@ -38,7 +39,7 @@ namespace Shareson.Support
                 ExcludedExtensions = ExcludedExtensions
             };
 
-            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + JsonConvert.SerializeObject(model);
             jsonRequest += "<EOS>";
             return jsonRequest;
         }
