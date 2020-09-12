@@ -52,12 +52,11 @@
                     <Button Content="Upload" Command="{Binding Upload, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox>
+            <!--<GroupBox>
                 <StackPanel Background="Black">
                     <Button Content="Connect To Server" Command="{Binding ConnectToServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
-
-            </GroupBox>
+            </GroupBox>-->
         </StackPanel>
 
         <ScrollViewer Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">

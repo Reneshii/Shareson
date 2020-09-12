@@ -151,10 +151,23 @@ namespace Shareson.ViewModel
                     IsCreateAccountAvailable = result;
                     ServerStatus = result;
 
-                    if(AccountControlViewModel != null)
+                    if(result == true)
                     {
-                        AccountControlViewModel.LogInEnable = result;
+                        if (AccountControlViewModel != null)
+                        {
+                            AccountControlViewModel.IsServerOn = true;
+                            IsCreateAccountAvailable = true;
+                        }
                     }
+                    else
+                    {
+                        if (AccountControlViewModel != null)
+                        {
+                            AccountControlViewModel.IsServerOn = false;
+                            IsCreateAccountAvailable = false;
+                        }
+                    }
+
                     Thread.Sleep(5000);
                 }
                 while (ClientHelper.ContinueTestConnection == true);

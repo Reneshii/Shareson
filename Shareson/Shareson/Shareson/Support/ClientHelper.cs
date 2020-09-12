@@ -65,6 +65,7 @@ namespace Shareson.Support.ClientHelper
 
                     if (socket.Connected)
                     {
+                        socket.Blocking = false;
                         socket.Disconnect(false);
                         test = true;
                     }

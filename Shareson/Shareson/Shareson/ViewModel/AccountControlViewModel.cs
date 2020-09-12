@@ -23,11 +23,19 @@ namespace Shareson.ViewModel
                 {
                     model._LogInBtn = new RelayCommand(f => true, async f =>
                     {
-                        ClientHelper.ContinueTestConnection = false;
-                        await repository.ConnectToAccount(Email, Password);
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.Show();
-                        closeLoginWindow.Invoke();
+                        
+                        if(!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password) && IsServerOn == true)
+                        {
+                            ClientHelper.ContinueTestConnection = false;
+                            await repository.ConnectToAccount(Email, Password);
+                            MainWindow mainWindow = new MainWindow();
+                            mainWindow.Show();
+                            closeLoginWindow.Invoke();
+                        }
+                        else
+                        {
+
+                        }
                     });
                 }
                 return model._LogInBtn;
@@ -77,11 +85,24 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        public bool IsServerOn
+        {
+            get
+            {
+                return model._IsServerOn;
+            }
+            set
+            {
+                model._IsServerOn = value;
+                NotifyPropertyChanged();
+            }
+        }
         #endregion
 
         public AccountControlViewModel(Action closeLoginWindow)
         {
             Initialize();
+            LogInEnable = true;
             this.closeLoginWindow = closeLoginWindow;
         }
 

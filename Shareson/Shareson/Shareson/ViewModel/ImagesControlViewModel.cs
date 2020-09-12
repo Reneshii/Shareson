@@ -81,18 +81,18 @@ namespace Shareson.ViewModel
             }
             set { }
         }
-        public ICommand ConnectToServer
-        {
-            get
-            {
-                if (model._ConnectToServer == null)
-                {
-                    model._ConnectToServer = new RelayCommand(f => !ConnectedToServer, async f => ConnectedToServer = await repositoryOnlySocket.StartConnect());
-                }
-                return model._ConnectToServer;
-            }
-            set { }
-        }
+        //public ICommand ConnectToServer
+        //{
+        //    get
+        //    {
+        //        if (model._ConnectToServer == null)
+        //        {
+        //            model._ConnectToServer = new RelayCommand(f => !ConnectedToServer, async f => ConnectedToServer = await repositoryOnlySocket.StartConnect());
+        //        }
+        //        return model._ConnectToServer;
+        //    }
+        //    set { }
+        //}
         //public ICommand DetailsBtn
         //{
         //    get
@@ -229,6 +229,8 @@ namespace Shareson.ViewModel
             model = new ImagesControlModel();
             repositoryOnlySocket = new ImagesControlRepository();
             OCImagesSource = new ObservableCollection<ScrollViewerItemsModel>();
+
+            ConnectedToServer = true;
         }
         #endregion
 
