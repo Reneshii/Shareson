@@ -4,12 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Shareson.View"
+             xmlns:ViewModels="clr-namespace:Shareson.ViewModel"
+             xmlns:Views="clr-namespace:Shareson.View.ViewControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModels:ObservableCollectionControlViewModel}">
+                <Views:ObservableCollectionControl/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ImageInfoControlViewModel}">
+                <Views:ImageInfoControl/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid MaxHeight="600" MaxWidth="800" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*" />
-            <RowDefinition Height="12*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="0.3*" />
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -30,18 +45,18 @@
                     <Button Content="Display Random" Command="{Binding DisplaySingleRandom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Loading, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="All Photos" BorderThickness="2" Margin="0,5,0,0">
+            <GroupBox Header="All Photos" BorderThickness="2" Margin="0,20,0,0">
                 <StackPanel Name="AllFiles">
                     <GroupBox Header="Images Limit" BorderThickness="2" Margin="0,5,0,0">
                         <StackPanel>
-                            <Label Content="Be carful with quantity!&#10;It consume a lot of memory !" FontSize="10" Foreground="Red"/>
+                            <TextBlock Text="Be carful with quantity!&#10;It consume a lot of memory !" FontSize="10" Foreground="Red"/>
                             <TextBox Text="{Binding ImagesLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="130" HorizontalContentAlignment="Center" TextWrapping="Wrap" />
                         </StackPanel>
                     </GroupBox>
                     <Button Content="Display All" Command="{Binding DisplayMulti, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Loading, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Upload" BorderThickness="2" Margin="0,5,0,0">
+            <GroupBox Header="Upload" BorderThickness="2" Margin="0,20,0,0">
                 <StackPanel>
                     <GroupBox>
                         <TextBlock>
@@ -52,42 +67,9 @@
                     <Button Content="Upload" Command="{Binding Upload, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </GroupBox>
-            <!--<GroupBox>
-                <StackPanel Background="Black">
-                    <Button Content="Connect To Server" Command="{Binding ConnectToServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
-            </GroupBox>-->
         </StackPanel>
-
-        <ScrollViewer Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
-            <StackPanel>
-                <!--<Frame Content="{Binding PageDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden"/>-->
-                <ItemsControl Name="ItemsControl" ItemsSource="{Binding OCImagesSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding ItemsControlVisability, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <GroupBox>
-                                <GroupBox.Header>
-                                    <TextBlock>
-                                    <Run Text="File Name : "/>
-                                    <Run Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    </TextBlock>
-                                </GroupBox.Header>
-                                <StackPanel>
-                                    <Button Content="See more" Command="{Binding DetailsBtn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <TextBlock>
-                                    <Run Text="File Size : "/>
-                                    <Run Text="{Binding SizeInBytes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <Run Text="KB = "/>
-                                    <Run Text="{Binding SizeInMegabytes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <Run Text="MB"/>
-                                    </TextBlock>
-                                    <Image Source="{Binding BitmapImages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                </StackPanel>
-                            </GroupBox>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </ScrollViewer>
+        <StackPanel  Grid.Column="1" Grid.Row="1">
+            <ContentControl Content="{Binding ItemsControlViewModelContentControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

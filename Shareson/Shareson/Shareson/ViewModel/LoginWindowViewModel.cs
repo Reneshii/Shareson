@@ -28,7 +28,7 @@ namespace Shareson.ViewModel
                 {
                     model._CallLogInControl = new RelayCommand(f => true, f =>
                     {
-                        AccountControlViewModel = new AccountControlViewModel(closeLoginWindow);
+                        //AccountControlViewModel = new AccountControlViewModel(closeLoginWindow); <---- Reset textboxes Login/Password
                         LoginWindowContentControl = AccountControlViewModel;
                     });
                 }

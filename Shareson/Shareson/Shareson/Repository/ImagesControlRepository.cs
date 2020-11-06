@@ -1,10 +1,13 @@
-﻿using Shareson.Enum;
+﻿using Newtonsoft.Json;
+using Shareson.Enum;
 using Shareson.Interface;
 using Shareson.Model;
+using Shareson.Model.ForViews;
 using Shareson.Repository.SupportMethods;
 using Shareson.Support;
 using Shareson.Support.ClientHelper;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Shareson.Repository
@@ -22,67 +25,78 @@ namespace Shareson.Repository
             return clientHelper.ConnectToServer();
         }
 
-        async Task<ObservableCollection<ScrollViewerItemsModel>> ISocketOnly.GetSingleImage(string PathToDirectory, string FileName, string[] ExcludedExtensions = null)
+        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetSingleImage(string PathToDirectory, string FileName, string[] ExcludedExtensions = null)
         {
-            //ObservableCollection<ScrollViewerItemsModel> Result = new ObservableCollection<ScrollViewerItemsModel>();
             string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetImage, PathToDirectory, FileName, ExcludedExtensions);
 
 
-            Task<ObservableCollection<ScrollViewerItemsModel>> GetSingleImage_Task =
-                new Task<ObservableCollection<ScrollViewerItemsModel>>(() => GetFile(searchingFile));
+            Task<ObservableCollection<FileInfoModel>> GetSingleImage_Task =
+                new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile));
             GetSingleImage_Task.Start();
             
             return await GetSingleImage_Task;
         }
 
-        async Task<ObservableCollection<ScrollViewerItemsModel>> ISocketOnly.GetRandomImage(string PathToDirectory, string[] ExcludedExtensions = null)
+        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetRandomImage(string PathToDirectory, string[] ExcludedExtensions = null)
         {
             string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetRandomImage, PathToDirectory, null, ExcludedExtensions);
 
-            Task<ObservableCollection<ScrollViewerItemsModel>> GetRandomImage_Task = 
-                new Task<ObservableCollection<ScrollViewerItemsModel>>(() => GetFile(searchingFile));
+            Task<ObservableCollection<FileInfoModel>> GetRandomImage_Task = 
+                new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile));
             GetRandomImage_Task.Start();
 
             return await GetRandomImage_Task;
         }
 
-        async Task<ObservableCollection<ScrollViewerItemsModel>> ISocketOnly.GetMultiImage(string PathToDirectory, int Amount = 5, string[] ExcludedExtensions = null)
+        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetMultiImage(string PathToDirectory, int Amount = 5, string[] ExcludedExtensions = null)
         {
             string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetRandomImage, PathToDirectory, null, ExcludedExtensions);
 
-            Task<ObservableCollection<ScrollViewerItemsModel>> GetMultiImage_Task =
-                    new Task<ObservableCollection<ScrollViewerItemsModel>>(() => GetFile(searchingFile,Amount));
+            Task<ObservableCollection<FileInfoModel>> GetMultiImage_Task =
+                    new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile,Amount));
             GetMultiImage_Task.Start();
 
             return await GetMultiImage_Task;
         }
 
-        private void PutFile(string name)
+        public void PutFile(string name)
         {
 
         }
-        private ObservableCollection<ScrollViewerItemsModel> GetFile(string searchingFile, int repeat = 1)
+        private ObservableCollection<FileInfoModel> GetFile(string searchingFile, int repeat = 1)
         {
-            ObservableCollection<ScrollViewerItemsModel> resultToReturn = new ObservableCollection<ScrollViewerItemsModel>();
+            ObservableCollection<FileInfoModel> resultToReturn = new ObservableCollection<FileInfoModel>();
             for (int i = 0; i < repeat; i++)
             {
                 clientHelper.Send(ClientHelperModel.clientSocket, searchingFile);
                 clientHelper.Receive(ClientHelperModel.clientSocket);
-                resultToReturn.Add(FileAsElementOfScrollViewer());
+                resultToReturn.Add(PrepareModelForObservableCollection());
 
 
                 clientHelper.ResetAllManualResetEvent();
             }
             return resultToReturn;
         }
-        private ScrollViewerItemsModel FileAsElementOfScrollViewer()
+        private FileInfoModel PrepareModelForObservableCollection()
         {
             ConvertImage convertImage = new ConvertImage();
-            ScrollViewerItemsModel resultToReturn = new ScrollViewerItemsModel()
+            byte[] raw;
+            string received;
+            ReceivedFileInfoModel imageInfo;
+
+            raw = clientHelper.model.receivedBytes;
+            received = Encoding.ASCII.GetString(raw);
+            imageInfo = JsonConvert.DeserializeObject<ReceivedFileInfoModel>(received);
+
+            float KB = imageInfo.Size / 1024;
+            float MB = KB / 1024;
+
+            FileInfoModel resultToReturn = new FileInfoModel()
             {
-                BitmapImages = convertImage.CreateImageFromByteArray(clientHelper.model.receivedBytes),
-                SizeInBytes = convertImage.Length,
-                SizeInMegabytes = convertImage.Length / 1000000,
+                BMapImage = convertImage.CreateImageFromByteArray(imageInfo.Image, true),
+                SizeInBytes = imageInfo.Size,
+                SizeInMegabytes = MB,
+                Name = imageInfo.Name,
             };
             return resultToReturn;
         }

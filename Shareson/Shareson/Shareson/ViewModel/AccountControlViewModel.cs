@@ -23,8 +23,8 @@ namespace Shareson.ViewModel
                 {
                     model._LogInBtn = new RelayCommand(f => true, async f =>
                     {
-                        
-                        if(!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password) && IsServerOn == true)
+                        IsServerOn = true;
+                        if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password) && IsServerOn == true)
                         {
                             ClientHelper.ContinueTestConnection = false;
                             await repository.ConnectToAccount(Email, Password);

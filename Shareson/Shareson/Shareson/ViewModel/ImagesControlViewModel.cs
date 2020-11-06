@@ -2,7 +2,6 @@
 using Shareson.Model;
 using System.Windows.Input;
 using Shareson.Repository;
-using System.Collections.ObjectModel;
 using Shareson.Interface;
 using System.Windows;
 using System.Linq;
@@ -14,6 +13,8 @@ namespace Shareson.ViewModel
     {
         ImagesControlModel model;
         OptionsModel optionsModel;
+        ObservableCollectionControlViewModel observableCollectionViewModel;
+        ImageInfoControlViewModel ImageInfoViewModel;
 
         ISocketOnly repositoryOnlySocket;
 
@@ -32,7 +33,8 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        OCImagesSource = await repositoryOnlySocket.GetRandomImage(DirectoryPath, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetRandomImage(DirectoryPath, excluded.ToArray());
+                        ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
                 return model._DisplaySingleRandom;
@@ -53,7 +55,8 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        OCImagesSource = await repositoryOnlySocket.GetMultiImage(DirectoryPath, ImagesLimit, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetMultiImage(DirectoryPath, ImagesLimit, excluded.ToArray());
+                        ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
                 return model._DisplayMulti;
@@ -74,60 +77,13 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        OCImagesSource = await repositoryOnlySocket.GetSingleImage(DirectoryPath, FileName, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetSingleImage(DirectoryPath, FileName, excluded.ToArray());
+                        ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
                 return model._DisplaySingle;
             }
             set { }
-        }
-        //public ICommand ConnectToServer
-        //{
-        //    get
-        //    {
-        //        if (model._ConnectToServer == null)
-        //        {
-        //            model._ConnectToServer = new RelayCommand(f => !ConnectedToServer, async f => ConnectedToServer = await repositoryOnlySocket.StartConnect());
-        //        }
-        //        return model._ConnectToServer;
-        //    }
-        //    set { }
-        //}
-        //public ICommand DetailsBtn
-        //{
-        //    get
-        //    {
-        //        return model._DetailsBtn;
-        //    }
-        //    set
-        //    {
-        //        model._DetailsBtn = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
-        //public ObservableCollection<ScrollViewerItemsModel> ImagesItems
-        //{
-        //    get
-        //    {
-        //        return model._ImagesItems;
-        //    }
-        //    set
-        //    {
-        //        model._ImagesItems = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
-        public ObservableCollection<ScrollViewerItemsModel> OCImagesSource
-        {
-            get
-            {
-                return model._OCImagesSource;
-            }
-            set
-            {
-                model._OCImagesSource = value;
-                NotifyPropertyChanged();
-            }
         }
         public Visibility Loading
         {
@@ -217,6 +173,33 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        public object ItemsControlViewModelContentControl
+        {
+            get
+            {
+                return model._ItemsControlViewModelContentControl;
+            }
+            set
+            {
+                model._ItemsControlViewModelContentControl = value;
+                NotifyPropertyChanged();
+            }
+        }
+        FileInfoModel InfoModel
+        {
+            get
+            {
+                return model._FileInfoModel;
+            }
+            set
+            {
+                model._FileInfoModel = value;
+                NotifyPropertyChanged();
+
+                ImageInfoViewModel = new ImageInfoControlViewModel(model._FileInfoModel);
+                ItemsControlViewModelContentControl = ImageInfoViewModel;
+            }
+        }
         #endregion
 
         #region MainMethods
@@ -228,9 +211,13 @@ namespace Shareson.ViewModel
         {
             model = new ImagesControlModel();
             repositoryOnlySocket = new ImagesControlRepository();
-            OCImagesSource = new ObservableCollection<ScrollViewerItemsModel>();
-
+            observableCollectionViewModel = new ObservableCollectionControlViewModel();
             ConnectedToServer = true;
+
+            observableCollectionViewModel.GetImageInfo_Event += () =>
+            {
+                InfoModel = observableCollectionViewModel.InfoModel;
+            };
         }
         #endregion
 

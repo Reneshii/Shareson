@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\App.xaml
-11-7171753
+131418432459
 
-53-1304743659
+61-1484638396
 171021816450
-CustomControls\Button1.xaml;CustomControls\Button2.xaml;View\LoginWindow.xaml;View\ViewControls\AccountControl.xaml;View\ViewControls\AccountOptionsControl.xaml;View\ViewControls\ContactControl.xaml;View\ViewControls\CreateAccountControl.xaml;View\ViewControls\ImagesControl.xaml;View\MainWindow.xaml;View\ViewControls\LimitedOptionsControl.xaml;View\ViewControls\OptionsControl.xaml;
+CustomControls\Button1.xaml;CustomControls\Button2.xaml;View\LoginWindow.xaml;View\ViewControls\AccountControl.xaml;View\ViewControls\AccountOptionsControl.xaml;View\ViewControls\ContactControl.xaml;View\ViewControls\CreateAccountControl.xaml;View\ViewControls\ImageInfoControl.xaml;View\ViewControls\ImagesControl.xaml;View\MainWindow.xaml;View\ViewControls\LimitedOptionsControl.xaml;View\ViewControls\ObservableCollectionControl.xaml;View\ViewControls\OptionsControl.xaml;
 
-False
+True
 

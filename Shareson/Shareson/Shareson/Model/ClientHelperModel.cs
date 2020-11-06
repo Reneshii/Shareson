@@ -14,7 +14,7 @@ namespace Shareson.Model
         public int PORT = Properties.Settings.Default.Port /*11000*/;
         public string DNSorIP = Properties.Settings.Default.DNSorIP;
 
-        public const int MaxBufferSize = 5000000;
+        public const int MaxBufferSize = 10000000;
         public byte[] buffer = new byte[MaxBufferSize];
         public byte[] receivedBytes;
     }

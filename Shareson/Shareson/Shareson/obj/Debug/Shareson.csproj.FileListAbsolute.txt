@@ -123,3 +123,7 @@ C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\Shareson.csprojAssemblyReference.cache
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\CreateAccountControl.g.cs
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\CreateAccountControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ImageInfoControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ObservableCollectionControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ImageInfoControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Debug\View\ViewControls\ObservableCollectionControl.baml

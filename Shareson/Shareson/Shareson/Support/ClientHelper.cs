@@ -25,12 +25,12 @@ namespace Shareson.Support.ClientHelper
 
         public bool ConnectToServer()
         {
-            model.ipHostInfo = Dns.GetHostEntry(model.DNSorIP); // Add textBox to add DNS;
+            model.ipHostInfo = Dns.GetHostEntry(model.DNSorIP); 
             model.ipAddress = model.ipHostInfo.AddressList[0];
-            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT); // Add textBox to add PORT;
+            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT); 
 
             ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            ClientHelperModel.clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+            //ClientHelperModel.clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
             ClientHelperModel.clientSocket.BeginConnect(model.remoteEP, new AsyncCallback(ConnectCallBack), ClientHelperModel.clientSocket);
 
             connectDone.WaitOne();
@@ -55,9 +55,9 @@ namespace Shareson.Support.ClientHelper
             {
                 if(ContinueTestConnection == true)
                 {
-                    testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); // Add textBox to add DNS;
+                    testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); 
                     testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
-                    testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); // Add textBox to add PORT;
+                    testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); 
 
                     socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                     socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);

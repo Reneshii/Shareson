@@ -6,7 +6,7 @@ namespace Shareson.Interface
 {
     interface IFileTransfer
     {
-        ObservableCollection<ScrollViewerItemsModel> GetFile(Socket clientSocket, string searchingFile, int repeat = 1);
+        ObservableCollection<FileInfoModel> GetFile(Socket clientSocket, string searchingFile, int repeat = 1);
         void PutFile(string name);
     }
 }
