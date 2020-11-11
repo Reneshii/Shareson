@@ -30,29 +30,29 @@ namespace Shareson.ViewModel
         #endregion
 
         #region Properties
-        public string PathToServerFolder
-        {
-            get
-            {
-                return model._PathToServerFolder;
-            }
-            set
-            {
-                if (value.Contains("/"))
-                {
-                    value = value.Replace("/", @"\");
-                }
+        //public string PathToServerFolder
+        //{
+        //    get
+        //    {
+        //        return model._PathToServerFolder;
+        //    }
+        //    set
+        //    {
+        //        if (value.Contains("/"))
+        //        {
+        //            value = value.Replace("/", @"\");
+        //        }
 
-                var lastChar = value.LastIndexOf(@"\");
-                if (lastChar > 0 && lastChar < value.Length && !value.EndsWith(@"\"))
-                {
-                    value += @"\";
-                }
+        //        var lastChar = value.LastIndexOf(@"\");
+        //        if (lastChar > 0 && lastChar < value.Length && !value.EndsWith(@"\"))
+        //        {
+        //            value += @"\";
+        //        }
 
-                model._PathToServerFolder = value;
-                NotifyPropertyChanged();
-            }
-        }
+        //        model._PathToServerFolder = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
         public int Port
         {
             get

@@ -4,12 +4,12 @@ using Shareson.Support;
 
 namespace Shareson.ViewModel
 {
-    public class ImageInfoControlViewModel: Property_Changed
+    public class ImageInfoControlViewModel : Property_Changed
     {
         ImageInfoControlModel model;
 
         #region Properites
-        public FileInfoModel FileInfoModel
+        public Data.FileInfoModel FileInfoModel
         {
             get
             {
@@ -26,10 +26,10 @@ namespace Shareson.ViewModel
         void InitializeProperties()
         {
             model = new ImageInfoControlModel();
-            FileInfoModel = new FileInfoModel();
+            FileInfoModel = new Data.FileInfoModel();
         }
 
-        public ImageInfoControlViewModel(FileInfoModel model)
+        public ImageInfoControlViewModel(Data.FileInfoModel model)
         {
             InitializeProperties();
 

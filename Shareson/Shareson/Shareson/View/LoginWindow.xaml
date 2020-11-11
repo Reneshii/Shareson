@@ -14,8 +14,8 @@
                 <ResourceDictionary Source="/CustomControls/Button1.xaml"/>
                 <!--<ResourceDictionary Source="/CustomControls/Button2.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type Models:AccountControlViewModel}">
-                <Views:AccountControl/>
+            <DataTemplate DataType="{x:Type Models:LoginControlViewModel}">
+                <Views:LoginControl/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type Models:OptionsControlViewModel}">
                 <Views:LimitedOptionsControl/>
@@ -49,7 +49,6 @@
 
         <StackPanel Background="#003B53" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
 
-            <!--<Label Content="{Binding ServerStatus, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>-->
         </StackPanel>
         <Button Content="Log In"  Command="{Binding CallLogInControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="100" Grid.Column="0" Grid.Row="4"/>
         <Button Content="Create Account" Command="{Binding CallCreateAccountControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" IsEnabled="{Binding IsCreateAccountAvailable ,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Width="100" Grid.Column="1" Grid.Row="4"/>

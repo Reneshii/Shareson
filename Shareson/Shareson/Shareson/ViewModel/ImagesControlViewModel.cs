@@ -12,6 +12,7 @@ namespace Shareson.ViewModel
     public class ImagesControlViewModel : Property_Changed
     {
         ImagesControlModel model;
+        Data.AccountModel AccountModel;
         OptionsModel optionsModel;
         ObservableCollectionControlViewModel observableCollectionViewModel;
         ImageInfoControlViewModel ImageInfoViewModel;
@@ -33,7 +34,7 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetRandomImage(DirectoryPath, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetRandomImage(DirectoryPath, 1, AccountModel, excluded.ToArray());
                         ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
@@ -55,7 +56,7 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetMultiImage(DirectoryPath, ImagesLimit, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetRandomImage(DirectoryPath, ImagesLimit, AccountModel, excluded.ToArray());
                         ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
@@ -77,7 +78,7 @@ namespace Shareson.ViewModel
                         {
                             excluded.Add(item.ExcludedExtension);
                         }
-                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetSingleImage(DirectoryPath, FileName, excluded.ToArray());
+                        observableCollectionViewModel.OCImagesSource = await repositoryOnlySocket.GetSingleImage(DirectoryPath, FileName, AccountModel, excluded.ToArray());
                         ItemsControlViewModelContentControl = observableCollectionViewModel;
                     });
                 }
@@ -121,28 +122,36 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        public string[] DirectoriesPath
+        {
+            get
+            {
+                return model._DirectoriesPath;
+            }
+            set
+            {
+                model._DirectoriesPath = value;
+                NotifyPropertyChanged();
+            }
+        }
         public string DirectoryPath
         {
             get
             {
-                if (string.IsNullOrEmpty(model._DirectoryPath))
-                {
-                    model._DirectoryPath = this.optionsModel._PathToServerFolder;
-                }
                 return model._DirectoryPath;
             }
             set
             {
-                if(value.Contains("/"))
-                {
-                    value = value.Replace("/", @"\");
-                }
+                //if (value.Contains("/"))
+                //{
+                //    value = value.Replace("/", @"\");
+                //}
 
-                var lastChar = value.LastIndexOf(@"\");
-                if(lastChar > 0 && lastChar < value.Length && !value.EndsWith(@"\"))
-                {
-                    value += @"\";
-                }
+                //var lastChar = value.LastIndexOf(@"\");
+                //if (lastChar > 0 && lastChar < value.Length && !value.EndsWith(@"\"))
+                //{
+                //    value += @"\";
+                //}
 
                 model._DirectoryPath = value;
                 NotifyPropertyChanged();
@@ -185,7 +194,7 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
-        FileInfoModel InfoModel
+        Data.FileInfoModel InfoModel
         {
             get
             {
@@ -203,20 +212,23 @@ namespace Shareson.ViewModel
         #endregion
 
         #region MainMethods
-        public ImagesControlViewModel()
+        public ImagesControlViewModel(Data.AccountModel accountModel)
         {
             Initialize();
+            AccountModel = accountModel;
+            DirectoriesPath = AccountModel.AccessedDirectory;
         }
         private void Initialize()
         {
             model = new ImagesControlModel();
+            AccountModel = new Data.AccountModel();
             repositoryOnlySocket = new ImagesControlRepository();
             observableCollectionViewModel = new ObservableCollectionControlViewModel();
             ConnectedToServer = true;
 
-            observableCollectionViewModel.GetImageInfo_Event += () =>
+            observableCollectionViewModel.GetImageInfoWhileClick_Event += () =>
             {
-                InfoModel = observableCollectionViewModel.InfoModel;
+                InfoModel = observableCollectionViewModel.InfoModelFor_ImagesControlViewModel;
             };
         }
         #endregion
@@ -224,7 +236,7 @@ namespace Shareson.ViewModel
         #region Methods
         public void ReloadSettings(OptionsModel model)
         {
-            DirectoryPath = model._PathToServerFolder;
+            //DirectoryPath = model._PathToServerFolder;
             this.optionsModel = model;
         }
 

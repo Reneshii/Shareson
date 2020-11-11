@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Shareson.Support.ClientHelper
+namespace Shareson.Support
 {
     public class ClientHelper 
     {
         InfoLog errorLog = new InfoLog(Properties.Settings.Default.LogsFilePath);
 
-        public ClientHelperModel model;
+        public Data.ClientHelperModel model;
         
         ManualResetEvent connectDone = new ManualResetEvent(false);
         ManualResetEvent sendDone = new ManualResetEvent(false);
@@ -20,21 +20,21 @@ namespace Shareson.Support.ClientHelper
 
         public ClientHelper()
         {
-            model = new ClientHelperModel();
+            model = new Data.ClientHelperModel();
         }
 
         public bool ConnectToServer()
         {
             model.ipHostInfo = Dns.GetHostEntry(model.DNSorIP); 
             model.ipAddress = model.ipHostInfo.AddressList[0];
-            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT); 
+            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
 
-            ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Data.ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             //ClientHelperModel.clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-            ClientHelperModel.clientSocket.BeginConnect(model.remoteEP, new AsyncCallback(ConnectCallBack), ClientHelperModel.clientSocket);
+            Data.ClientHelperModel.clientSocket.BeginConnect(model.remoteEP, new AsyncCallback(ConnectCallBack), Data.ClientHelperModel.clientSocket);
 
             connectDone.WaitOne();
-            if(ClientHelperModel.clientSocket.Connected)
+            if(Data.ClientHelperModel.clientSocket.Connected)
             {
                 return true;
             }
@@ -45,7 +45,7 @@ namespace Shareson.Support.ClientHelper
         }
 
         public static bool ContinueTestConnection;
-        private static ClientHelperModel testModel = new ClientHelperModel();
+        private static Data.ClientHelperModel testModel = new Data.ClientHelperModel();
         public static async Task<bool> TestConnection()
         {
             bool test;
@@ -100,8 +100,8 @@ namespace Shareson.Support.ClientHelper
         {
             try
             {
-                ClientHelperModel.clientSocket = (Socket)AR.AsyncState;
-                ClientHelperModel.clientSocket.EndConnect(AR);
+                Data.ClientHelperModel.clientSocket = (Socket)AR.AsyncState;
+                Data.ClientHelperModel.clientSocket.EndConnect(AR);
                 //Socket client = (Socket)AR.AsyncState;
                 //client.EndConnect(AR);
 #if DEBUG
@@ -154,7 +154,7 @@ namespace Shareson.Support.ClientHelper
             try
             {
                 Socket socket = client;
-                socket.BeginReceive(model.buffer, 0, ClientHelperModel.MaxBufferSize, 0, new AsyncCallback(ReceiveCallBack), socket);
+                socket.BeginReceive(model.buffer, 0, Data.ClientHelperModel.MaxBufferSize, 0, new AsyncCallback(ReceiveCallBack), socket);
                 receiveDone.WaitOne();
             }
             catch(Exception e)
@@ -177,7 +177,7 @@ namespace Shareson.Support.ClientHelper
             }
             else
             {
-                client.BeginReceive(model.receivedBytes, 0, ClientHelperModel.MaxBufferSize, 0, new AsyncCallback(ReceiveCallBack), client);
+                client.BeginReceive(model.receivedBytes, 0, Data.ClientHelperModel.MaxBufferSize, 0, new AsyncCallback(ReceiveCallBack), client);
             }
             receiveDone.Set();
         }

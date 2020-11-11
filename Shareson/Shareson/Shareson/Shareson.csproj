@@ -84,26 +84,23 @@
     <Compile Include="Interface\IFileTransfer.cs" />
     <Compile Include="Interface\ISocketManagement.cs" />
     <Compile Include="Interface\ISocketOnly.cs" />
-    <Compile Include="Model\FileInfoModel.cs" />
-    <Compile Include="Model\ForViews\AccountControlModel.cs" />
-    <Compile Include="Model\AccountModel.cs" />
-    <Compile Include="Model\ClientHelperModel.cs" />
     <Compile Include="Model\Excluded.cs" />
     <Compile Include="Model\ForViews\CreateAccountModel.cs" />
     <Compile Include="Model\ForViews\ImageInfoControlModel.cs" />
     <Compile Include="Model\ForViews\ImagesControlModel.cs" />
+    <Compile Include="Model\ForViews\LoginControlModel.cs" />
     <Compile Include="Model\ForViews\ObservableCollectionControlModel.cs" />
     <Compile Include="Model\ForViews\OptionsModel.cs" />
-    <Compile Include="Model\ForViews\ReceivedFileInfoModel.cs" />
     <Compile Include="Model\LoginWindowModel.cs" />
     <Compile Include="Model\MainWindowModel.cs" />
-    <Compile Include="Repository\AccountControlRepository.cs" />
     <Compile Include="Repository\CreateAccountControlRepository.cs" />
     <Compile Include="Repository\ImagesControlRepository.cs" />
+    <Compile Include="Repository\LoginControlRepository.cs" />
     <Compile Include="Repository\LoginWindowRepository.cs" />
     <Compile Include="Repository\MainWindowRepository.cs" />
     <Compile Include="Repository\ObservableCollectionControlRepository.cs" />
     <Compile Include="Repository\OptionsRepository.cs" />
+    <Compile Include="Model\Data.cs" />
     <Compile Include="Support\ExcludedExtensions.cs" />
     <Compile Include="Support\ByteToFile.cs" />
     <Compile Include="Support\ClientHelper.cs" />
@@ -111,21 +108,19 @@
     <Compile Include="Support\InfoLog.cs" />
     <Compile Include="Support\Property_Changed.cs" />
     <Compile Include="Support\RelayCommand.cs" />
-    <Compile Include="ViewModel\AccountControlViewModel.cs" />
+    <Compile Include="Support\Requests.cs" />
     <Compile Include="ViewModel\AccountOptionsControlViewModel.cs" />
     <Compile Include="ViewModel\ContactControlViewModel.cs" />
     <Compile Include="ViewModel\CreateAccountControlViewModel.cs" />
     <Compile Include="ViewModel\ImageInfoControlViewModel.cs" />
     <Compile Include="ViewModel\ImagesControlViewModel.cs" />
+    <Compile Include="ViewModel\LoginControlViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ObservableCollectionControlViewModel.cs" />
     <Compile Include="ViewModel\OptionsControlViewModel.cs" />
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ViewControls\AccountControl.xaml.cs">
-      <DependentUpon>AccountControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ViewControls\AccountOptionsControl.xaml.cs">
       <DependentUpon>AccountOptionsControl.xaml</DependentUpon>
@@ -145,6 +140,9 @@
     <Compile Include="View\ViewControls\LimitedOptionsControl.xaml.cs">
       <DependentUpon>LimitedOptionsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewControls\LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewControls\ObservableCollectionControl.xaml.cs">
       <DependentUpon>ObservableCollectionControl.xaml</DependentUpon>
     </Compile>
@@ -162,10 +160,6 @@
     <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\ViewControls\AccountControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ViewControls\AccountOptionsControl.xaml">
       <SubType>Designer</SubType>
@@ -201,6 +195,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\ViewControls\LimitedOptionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewControls\LoginControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

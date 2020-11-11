@@ -2,10 +2,8 @@
 using Shareson.Enum;
 using Shareson.Interface;
 using Shareson.Model;
-using Shareson.Model.ForViews;
 using Shareson.Repository.SupportMethods;
 using Shareson.Support;
-using Shareson.Support.ClientHelper;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,51 +23,39 @@ namespace Shareson.Repository
             return clientHelper.ConnectToServer();
         }
 
-        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetSingleImage(string PathToDirectory, string FileName, string[] ExcludedExtensions = null)
+        async Task<ObservableCollection<Data.FileInfoModel>> ISocketOnly.GetSingleImage(string PathToDirectory, string FileName, Data.AccountModel accountModel = null, string[] ExcludedExtensions = null)
         {
-            string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetImage, PathToDirectory, FileName, ExcludedExtensions);
+            string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetImage, PathToDirectory, FileName, accountModel, ExcludedExtensions);
 
-
-            Task<ObservableCollection<FileInfoModel>> GetSingleImage_Task =
-                new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile));
+            Task<ObservableCollection<Data.FileInfoModel>> GetSingleImage_Task =
+                new Task<ObservableCollection<Data.FileInfoModel>>(() => GetFile(searchingFile));
             GetSingleImage_Task.Start();
             
             return await GetSingleImage_Task;
         }
 
-        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetRandomImage(string PathToDirectory, string[] ExcludedExtensions = null)
+        async Task<ObservableCollection<Data.FileInfoModel>> ISocketOnly.GetRandomImage(string PathToDirectory, int Amount = 1, Data.AccountModel accountModel = null, string[] ExcludedExtensions = null)
         {
-            string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetRandomImage, PathToDirectory, null, ExcludedExtensions);
+            string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetRandomImage, PathToDirectory,null ,accountModel, ExcludedExtensions);
 
-            Task<ObservableCollection<FileInfoModel>> GetRandomImage_Task = 
-                new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile));
+            Task <ObservableCollection<Data.FileInfoModel>> GetRandomImage_Task = 
+                new Task<ObservableCollection<Data.FileInfoModel>>(() => GetFile(searchingFile, Amount));
             GetRandomImage_Task.Start();
 
             return await GetRandomImage_Task;
-        }
-
-        async Task<ObservableCollection<FileInfoModel>> ISocketOnly.GetMultiImage(string PathToDirectory, int Amount = 5, string[] ExcludedExtensions = null)
-        {
-            string searchingFile = RequestConstructor.CreateImageRequestAsJson(AvailableMethodsOnServer.GetRandomImage, PathToDirectory, null, ExcludedExtensions);
-
-            Task<ObservableCollection<FileInfoModel>> GetMultiImage_Task =
-                    new Task<ObservableCollection<FileInfoModel>>(() => GetFile(searchingFile,Amount));
-            GetMultiImage_Task.Start();
-
-            return await GetMultiImage_Task;
         }
 
         public void PutFile(string name)
         {
 
         }
-        private ObservableCollection<FileInfoModel> GetFile(string searchingFile, int repeat = 1)
+        private ObservableCollection<Data.FileInfoModel> GetFile(string searchingFile, int repeat = 1)
         {
-            ObservableCollection<FileInfoModel> resultToReturn = new ObservableCollection<FileInfoModel>();
+            ObservableCollection<Data.FileInfoModel> resultToReturn = new ObservableCollection<Data.FileInfoModel>();
             for (int i = 0; i < repeat; i++)
             {
-                clientHelper.Send(ClientHelperModel.clientSocket, searchingFile);
-                clientHelper.Receive(ClientHelperModel.clientSocket);
+                clientHelper.Send(Data.ClientHelperModel.clientSocket, searchingFile);
+                clientHelper.Receive(Data.ClientHelperModel.clientSocket);
                 resultToReturn.Add(PrepareModelForObservableCollection());
 
 
@@ -77,21 +63,21 @@ namespace Shareson.Repository
             }
             return resultToReturn;
         }
-        private FileInfoModel PrepareModelForObservableCollection()
+        private Data.FileInfoModel PrepareModelForObservableCollection()
         {
             ConvertImage convertImage = new ConvertImage();
             byte[] raw;
             string received;
-            ReceivedFileInfoModel imageInfo;
+            Data.FileInfoModel imageInfo;
 
             raw = clientHelper.model.receivedBytes;
             received = Encoding.ASCII.GetString(raw);
-            imageInfo = JsonConvert.DeserializeObject<ReceivedFileInfoModel>(received);
+            imageInfo = JsonConvert.DeserializeObject<Data.FileInfoModel>(received);
 
             float KB = imageInfo.Size / 1024;
             float MB = KB / 1024;
 
-            FileInfoModel resultToReturn = new FileInfoModel()
+            Data.FileInfoModel resultToReturn = new Data.FileInfoModel()
             {
                 BMapImage = convertImage.CreateImageFromByteArray(imageInfo.Image, true),
                 SizeInBytes = imageInfo.Size,

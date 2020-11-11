@@ -2,7 +2,7 @@
 
 namespace Shareson.Model
 {
-    public class AccountControlModel
+    public class LoginControlModel
     {
         public string _Name { get; set; }
         public string _Surname { get; set; }

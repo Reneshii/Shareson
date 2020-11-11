@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Shareson.View"
              xmlns:ViewModels="clr-namespace:Shareson.ViewModel"
              xmlns:Views="clr-namespace:Shareson.View.ViewControls"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
+             d:DesignHeight="620" d:DesignWidth="1024">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -20,23 +19,24 @@
         </ResourceDictionary>
     </UserControl.Resources>
     
-    <Grid MaxHeight="600" MaxWidth="800" Background="White">
+    <Grid MaxHeight="620" Width="1024" Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*" />
-            <RowDefinition Height="4*" />
-            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="620" />
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="4*" />
 
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Background="#003B53" Grid.RowSpan="3"/>
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1">
             <GroupBox Header="Single Photo" BorderThickness="2" >
                 <StackPanel Name="SingleFile">
                     <GroupBox Header="Directory Path" BorderThickness="2" Margin="0,5,0,0">
-                        <TextBox Text="{Binding DirectoryPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="130" HorizontalContentAlignment="Center" TextWrapping="Wrap" />
+                        <!--<TextBox Text="{Binding DirectoryPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="130" HorizontalContentAlignment="Center" TextWrapping="Wrap" />-->
+                        <ComboBox ItemsSource="{Binding DirectoriesPath, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding DirectoryPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </GroupBox>
                     <GroupBox Header="File Name" BorderThickness="2" Margin="0,5,0,0">
                         <TextBox Text="{Binding FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="130" HorizontalContentAlignment="Center" TextWrapping="Wrap" />
@@ -68,7 +68,7 @@
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-        <StackPanel  Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="2" Grid.Row="0">
             <ContentControl Content="{Binding ItemsControlViewModelContentControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </Grid>

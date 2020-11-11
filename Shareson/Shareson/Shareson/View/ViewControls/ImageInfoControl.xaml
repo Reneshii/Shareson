@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Shareson.View.ViewControls"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="600">
-    <Grid Background="White" MaxHeight="500" MaxWidth="600">
-        <StackPanel>
+             d:DesignHeight="620" d:DesignWidth="1024">
+
+    <Grid Background="White" MaxHeight="620" MaxWidth="1024">
+        <ScrollViewer>
             <Image Source="{Binding FileInfoModel.BMapImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        </StackPanel>
+        </ScrollViewer>
+        
     </Grid>
 </UserControl>

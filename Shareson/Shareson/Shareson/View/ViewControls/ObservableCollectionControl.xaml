@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Shareson.View.ViewControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="500">
+             d:DesignHeight="620" d:DesignWidth="1024">
 
-    <Grid Background="White" MaxHeight="500" MaxWidth="600">
+    <Grid Background="White" MaxHeight="620" MaxWidth="1024">
         <ScrollViewer>
             <ItemsControl Name = "ItemsControl" ItemsSource="{Binding OCImagesSource, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding ItemsControlVisability, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>

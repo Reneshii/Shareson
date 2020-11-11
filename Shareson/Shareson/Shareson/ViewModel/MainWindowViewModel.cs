@@ -9,6 +9,7 @@ namespace Shareson.ViewModel
     {
         MainWindowModel model;
         OptionsModel optionsModel;
+        Data.AccountModel AccountModel;
 
         MainWindowRepository repository;
 
@@ -93,18 +94,21 @@ namespace Shareson.ViewModel
             }
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(Data.AccountModel accountModel = null)
         {
+            AccountModel = accountModel;
+
             Initialize();
             
         }
         public void Initialize()
         {
+            
             model = new MainWindowModel();
             optionsModel = new OptionsModel();
             repository = new MainWindowRepository();
             OptionsControlViewModel = new OptionsControlViewModel();
-            imagesViewModel = new ImagesControlViewModel();
+            imagesViewModel = new ImagesControlViewModel(AccountModel);
             accountOptionsViewModel = new AccountOptionsControlViewModel();
         }
     }

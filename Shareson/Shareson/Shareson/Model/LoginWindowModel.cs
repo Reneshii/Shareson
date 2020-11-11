@@ -4,7 +4,7 @@ namespace Shareson.Model
 {
     public class LoginWindowModel 
     {
-        public bool _ServerStatus { get; set; }
+        //public bool _ServerStatus { get; set; }
         public bool _IsCreateAccountAvailable { get; set; }
         public object _LoginWindowContentControl { get; set; }
         

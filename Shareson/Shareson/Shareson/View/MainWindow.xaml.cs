@@ -1,4 +1,5 @@
-﻿using Shareson.ViewModel;
+﻿using Shareson.Model;
+using Shareson.ViewModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,11 +11,11 @@ namespace Shareson.View
     public partial class MainWindow : Window
     {
         //MainWindowViewModel_IIS mainWindowViewModel_IIS = new MainWindowViewModel_IIS();
-        public MainWindow()
+        public MainWindow(Data.AccountModel accountModel = null)
         {
             InitializeComponent();
             MouseDown += Window_MouseDown;
-            base.DataContext = new MainWindowViewModel();
+            base.DataContext = new MainWindowViewModel(accountModel);
             CenterScreen();
         }
 

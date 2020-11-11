@@ -7,7 +7,7 @@ namespace Shareson.Repository
     {
         public void SaveSettings(OptionsModel tempModel) // options -> global settings
         {
-            Properties.Settings.Default.PathToServerFolder = tempModel._PathToServerFolder;
+            //Properties.Settings.Default.PathToServerFolder = tempModel._PathToServerFolder;
             Properties.Settings.Default.LogsFilePath = tempModel._LogsFilePath;
             Properties.Settings.Default.DNSorIP = tempModel._DNSorIP;
             Properties.Settings.Default.Port = tempModel._Port;
@@ -20,7 +20,7 @@ namespace Shareson.Repository
         {
             OptionsModel model = new OptionsModel();
 
-            model._PathToServerFolder = Properties.Settings.Default.PathToServerFolder;
+            //model._PathToServerFolder = Properties.Settings.Default.PathToServerFolder;
             model._LogsFilePath = Properties.Settings.Default.LogsFilePath;
             model._DNSorIP = Properties.Settings.Default.DNSorIP;
             model._Port = Properties.Settings.Default.Port;

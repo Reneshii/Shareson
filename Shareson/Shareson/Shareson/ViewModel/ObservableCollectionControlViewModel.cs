@@ -15,7 +15,7 @@ namespace Shareson.ViewModel
 
         #region Properties
         public delegate void ImageInfoHandler();
-        public event ImageInfoHandler GetImageInfo_Event;
+        public event ImageInfoHandler GetImageInfoWhileClick_Event;
 
         public ICommand ClickImage
         {
@@ -25,8 +25,8 @@ namespace Shareson.ViewModel
                 {
                     model._ClickImage = new RelayCommand(f => true, (x) =>
                     {
-                        InfoModel = repository.GetImageInfo(x);
-                        GetImageInfo_Event?.Invoke();
+                        InfoModelFor_ImagesControlViewModel = repository.GetImageInfo(x);
+                        GetImageInfoWhileClick_Event?.Invoke();
                     });
                 }
                 return model._ClickImage;
@@ -38,19 +38,19 @@ namespace Shareson.ViewModel
             }
         }
 
-        public FileInfoModel InfoModel
+        public Data.FileInfoModel InfoModelFor_ImagesControlViewModel
         {
             get
             {
-                return model._InfoModel;
+                return model._InfoModelFor_ImagesControlViewModel;
             }
             set
             {
-                model._InfoModel = value;
+                model._InfoModelFor_ImagesControlViewModel = value;
                 NotifyPropertyChanged();
             }
         }
-        public ObservableCollection<FileInfoModel> OCImagesSource
+        public ObservableCollection<Data.FileInfoModel> OCImagesSource
         {
             get
             {
@@ -68,7 +68,7 @@ namespace Shareson.ViewModel
         {
             model = new ObservableCollectionControlModel();
             repository = new ObservableCollectionControlRepository();
-            OCImagesSource = new ObservableCollection<FileInfoModel>();
+            OCImagesSource = new ObservableCollection<Data.FileInfoModel>();
         }
     }
 }

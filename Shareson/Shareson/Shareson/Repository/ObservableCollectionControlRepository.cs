@@ -4,16 +4,16 @@ namespace Shareson.Repository
 {
     public class ObservableCollectionControlRepository
     {
-        public FileInfoModel GetImageInfo(object obj)
+        public Data.FileInfoModel GetImageInfo(object obj)
         {
-            var model = obj as FileInfoModel;
+            var model = obj as Data.FileInfoModel;
             if(model != null)
             {
                 return model;
             }
             else
             {
-                model = new FileInfoModel();
+                model = new Data.FileInfoModel();
                 return model;
             }
             

@@ -2,7 +2,6 @@
 using Shareson.Model.ForViews;
 using Shareson.Repository;
 using Shareson.Support;
-using Shareson.Support.ClientHelper;
 using System.Text;
 using System.Windows.Input;
 
@@ -10,7 +9,7 @@ namespace Shareson.ViewModel
 {
     public class CreateAccountControlViewModel : Property_Changed
     {
-        AccountModel accModel;
+        Data.AccountModel accModel;
         CreateAccountModel model;
         ClientHelper clientHelper;
         CreateAccountControlRepository repository;
@@ -27,8 +26,8 @@ namespace Shareson.ViewModel
                         clientHelper = new ClientHelper();
                         clientHelper.ConnectToServer();
                         var request = RequestConstructor.CreateAccountRequestAsJson(Enum.AvailableMethodsOnServer.CreateAccount, Email, Login, Password);
-                        clientHelper.Send(ClientHelperModel.clientSocket, request);
-                        clientHelper.Receive(ClientHelperModel.clientSocket);
+                        clientHelper.Send(Data.ClientHelperModel.clientSocket, request);
+                        clientHelper.Receive(Data.ClientHelperModel.clientSocket);
                         string received = Encoding.ASCII.GetString(clientHelper.model.receivedBytes);
                     });
                 }
@@ -115,7 +114,7 @@ namespace Shareson.ViewModel
 
         public CreateAccountControlViewModel()
         {
-            accModel = new AccountModel();
+            accModel = new Data.AccountModel();
             model = new CreateAccountModel();
             repository = new CreateAccountControlRepository();
         }

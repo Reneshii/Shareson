@@ -5,7 +5,7 @@ namespace Shareson.Model
 {
     public class OptionsModel
     {
-        public string _PathToServerFolder { get; set; }
+        //public string _PathToServerFolder { get; set; }
         public int _Port { get; set; }
         public string _DNSorIP { get; set; }
         public string _LogsFilePath { get; set; }

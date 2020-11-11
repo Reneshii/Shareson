@@ -16,13 +16,12 @@ using System.Windows.Shapes;
 namespace Shareson.View.ViewControls
 {
     /// <summary>
-    /// Logika interakcji dla klasy AccountControl.xaml
+    /// Logika interakcji dla klasy LoginControl.xaml
     /// </summary>
-    public partial class AccountControl : UserControl
+    public partial class LoginControl : UserControl
     {
-        public AccountControl()
+        public LoginControl()
         {
-            
             InitializeComponent();
         }
     }

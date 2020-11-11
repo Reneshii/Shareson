@@ -17,7 +17,7 @@ namespace Shareson.Support
         {
             string ServerMethod = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method);
 
-            AccountModel model = new AccountModel()
+            Data.AccountModel model = new Data.AccountModel()
             {
                 Login = Login,
                 Email = Email,
@@ -25,12 +25,26 @@ namespace Shareson.Support
                 Name = Name,
                 Surname = Surname,
             };
-
             string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + JsonConvert.SerializeObject(model);
             jsonRequest += "<EOS>";
             return jsonRequest;
         }
-        public static string CreateImageRequestAsJson(AvailableMethodsOnServer Method, string PathToDirectory, string FileName, string[] ExcludedExtensions = null)
+
+        public static string LoginToAccountRequestAsJson(AvailableMethodsOnServer Method, string Email, string Login, string Password)
+        {
+            string ServerMethod = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method);
+            Data.AccountModel model = new Data.AccountModel()
+            {
+                Login = Login,
+                Email = Email,
+                Password = Password,
+            };
+            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + JsonConvert.SerializeObject(model);
+            jsonRequest += "<EOS>";
+            return jsonRequest;
+        }
+
+        public static string CreateImageRequestAsJson(AvailableMethodsOnServer Method, string PathToDirectory, string FileName, Data.AccountModel accountModel, string[] ExcludedExtensions = null)
         {
             JsonModel model = new JsonModel()
             {
@@ -38,8 +52,21 @@ namespace Shareson.Support
                 FileName = FileName,
                 ExcludedExtensions = ExcludedExtensions
             };
+            if(accountModel == null)
+            {
+                accountModel = new Data.AccountModel();
+                accountModel.ID = string.Empty;
+                accountModel.Name = string.Empty;
+                accountModel.Email = string.Empty;
+                accountModel.Login = string.Empty;
+                accountModel.Surname = string.Empty;
+                accountModel.Password = string.Empty;
+            }
 
-            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) + "<Meth>" + JsonConvert.SerializeObject(model);
+            string jsonRequest = System.Enum.GetName(typeof(AvailableMethodsOnServer), Method) 
+                + "<Meth>" + JsonConvert.SerializeObject(model) 
+                + "<Req>" + JsonConvert.SerializeObject(accountModel);
+
             jsonRequest += "<EOS>";
             return jsonRequest;
         }

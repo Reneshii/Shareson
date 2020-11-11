@@ -1,17 +1,16 @@
 ﻿using Shareson.Model;
 using Shareson.Repository;
 using Shareson.Support;
-using Shareson.Support.ClientHelper;
 using Shareson.View;
 using System;
 using System.Windows.Input;
 
 namespace Shareson.ViewModel
 {
-    public class AccountControlViewModel : Property_Changed
+    public class LoginControlViewModel : Property_Changed
     {
-        AccountControlRepository repository;
-        AccountControlModel model;
+        LoginControlRepository repository;
+        LoginControlModel model;
         Action closeLoginWindow;
 
         #region Command
@@ -21,14 +20,14 @@ namespace Shareson.ViewModel
             {
                 if(model._LogInBtn == null)
                 {
-                    model._LogInBtn = new RelayCommand(f => true, async f =>
+                    model._LogInBtn = new RelayCommand(f => LogInEnable, async f =>
                     {
-                        IsServerOn = true;
+                        IsServerOn = Data.ClientHelperModel.IsServerRun;
                         if (!string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password) && IsServerOn == true)
                         {
+                            var accModel = await repository.requests.ConnectToAccount(Email, Password);
                             ClientHelper.ContinueTestConnection = false;
-                            await repository.ConnectToAccount(Email, Password);
-                            MainWindow mainWindow = new MainWindow();
+                            MainWindow mainWindow = new MainWindow(accModel);
                             mainWindow.Show();
                             closeLoginWindow.Invoke();
                         }
@@ -99,17 +98,16 @@ namespace Shareson.ViewModel
         }
         #endregion
 
-        public AccountControlViewModel(Action closeLoginWindow)
+        public LoginControlViewModel(Action closeLoginWindow)
         {
             Initialize();
-            LogInEnable = true;
             this.closeLoginWindow = closeLoginWindow;
         }
 
         private void Initialize()
         {
-            repository = new AccountControlRepository();
-            model = new AccountControlModel();
+            repository = new LoginControlRepository();
+            model = new LoginControlModel();
         }
     }
 }

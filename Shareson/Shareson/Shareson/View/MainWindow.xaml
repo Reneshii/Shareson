@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         xmlns:Views="clr-namespace:Shareson.View.ViewControls"
         xmlns:ViewModels="clr-namespace:Shareson.ViewModel"
-        Title="Shareson" Height="600" Width="800" 
+        Title="Shareson" Height="700" Width="1024" 
         WindowStyle="None" ResizeMode="NoResize">
         <!--AllowsTransparency="True" Background="Transparent"  ResizeMode="NoResize" -->
         <!--SizeToContent="WidthAndHeight"-->
@@ -34,28 +34,22 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="12*" />
-            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        
-        <StackPanel Background="#003B53" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal">
+
+        <StackPanel Background="#003B53" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" UseLayoutRounding="True">
             <Button Content="Images"  Command="{Binding CallImagesPage,  Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
             <Button Content="Options" Command="{Binding CallOptionsPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
             <Button Content="Contact" Command="{Binding CallContactPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
             <Button Content="Account" Command="{Binding CallAccountOptionsPage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button1}" Width="120" Margin="20,0,0,0"/>
             <TextBlock Text="{Binding AccountStatus}" Width="120" Margin="100,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="White"/>
         </StackPanel>
-        <StackPanel Grid.ColumnSpan="3" Grid.Row="2">
+        <StackPanel Grid.Row="1" UseLayoutRounding="True">
             <ContentControl Content="{Binding MainWindowContentControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
-        <StackPanel Background="#003B53" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal">
-        </StackPanel>
+        <StackPanel Background="#003B53" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" UseLayoutRounding="True"/>
+
     </Grid>
 </Window>

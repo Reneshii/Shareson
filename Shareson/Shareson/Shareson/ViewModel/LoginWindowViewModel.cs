@@ -1,7 +1,6 @@
 ﻿using Shareson.Model;
 using Shareson.Repository;
 using Shareson.Support;
-using Shareson.Support.ClientHelper;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace Shareson.ViewModel
         private Action closeLoginWindow;
 
 
-        AccountControlViewModel AccountControlViewModel;
+        LoginControlViewModel LoginControlViewModel;
         Task Task_UpdateServerStatus;
 
         #region Command
@@ -29,7 +28,7 @@ namespace Shareson.ViewModel
                     model._CallLogInControl = new RelayCommand(f => true, f =>
                     {
                         //AccountControlViewModel = new AccountControlViewModel(closeLoginWindow); <---- Reset textboxes Login/Password
-                        LoginWindowContentControl = AccountControlViewModel;
+                        LoginWindowContentControl = LoginControlViewModel;
                     });
                 }
                 return model._CallLogInControl;
@@ -96,18 +95,18 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
-        public bool ServerStatus
-        {
-            get
-            {
-                return model._ServerStatus;
-            }
-            set
-            {
-                model._ServerStatus = value;
-                NotifyPropertyChanged();
-            }
-        }
+        //public bool ServerStatus
+        //{
+        //    get
+        //    {
+        //        return model._ServerStatus;
+        //    }
+        //    set
+        //    {
+        //        model._ServerStatus = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
         public bool IsCreateAccountAvailable
         {
 
@@ -135,8 +134,8 @@ namespace Shareson.ViewModel
 
             model = new LoginWindowModel();
             repository = new LoginWindowRepository();
-            AccountControlViewModel = new AccountControlViewModel(closeLoginWindow);
-            LoginWindowContentControl = AccountControlViewModel;
+            LoginControlViewModel = new LoginControlViewModel(closeLoginWindow);
+            LoginWindowContentControl = LoginControlViewModel;
             InitializeTasks();
             Update();
         }
@@ -147,23 +146,25 @@ namespace Shareson.ViewModel
             {
                 do
                 {
-                    bool result = ClientHelper.TestConnection().Result;
-                    IsCreateAccountAvailable = result;
-                    ServerStatus = result;
+                    Data.ClientHelperModel.IsServerRun = ClientHelper.TestConnection().Result;
+                    IsCreateAccountAvailable = Data.ClientHelperModel.IsServerRun;
+                    //ServerStatus = result;
 
-                    if(result == true)
+                    if(Data.ClientHelperModel.IsServerRun == true)
                     {
-                        if (AccountControlViewModel != null)
+                        if (LoginControlViewModel != null)
                         {
-                            AccountControlViewModel.IsServerOn = true;
+                            LoginControlViewModel.IsServerOn = true;
+                            LoginControlViewModel.LogInEnable = true;
                             IsCreateAccountAvailable = true;
                         }
                     }
                     else
                     {
-                        if (AccountControlViewModel != null)
+                        if (LoginControlViewModel != null)
                         {
-                            AccountControlViewModel.IsServerOn = false;
+                            LoginControlViewModel.IsServerOn = false;
+                            LoginControlViewModel.LogInEnable = false;
                             IsCreateAccountAvailable = false;
                         }
                     }

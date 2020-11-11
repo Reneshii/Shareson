@@ -34,20 +34,19 @@
             <ColumnDefinition Width="20" Name="MarginRight"/>
         </Grid.ColumnDefinitions>
         
-        <GroupBox Header="Path To Server Folder" Grid.Column="1" Grid.Row="0" MaxHeight="50">
+        <!--<GroupBox Header="Path To Server Folder" Grid.Column="1" Grid.Row="0" MaxHeight="50">
             <TextBox Text="{Binding PathToServerFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : D:\Nowy folder\A\"/>
-        </GroupBox>
-        <GroupBox Header="Port" Grid.Column="1" Grid.Row="1" MaxHeight="50">
+        </GroupBox>-->
+        <GroupBox Header="Port" Grid.Column="1" Grid.Row="0" MaxHeight="50">
             <TextBox Text="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g :11000"/>
         </GroupBox>
-        <GroupBox Header="DNS or IP" Grid.Column="1" Grid.Row="2" MaxHeight="50">
+        <GroupBox Header="DNS or IP" Grid.Column="1" Grid.Row="1" MaxHeight="50">
             <TextBox Text="{Binding DNSorIP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : (PC name : DESKTOP-SV0P890) or (IP : 49.250.45.49)" />
         </GroupBox>
-        <GroupBox Header="Logs File Path" Grid.Column="1" Grid.Row="3" MaxHeight="50">
+        <GroupBox Header="Logs File Path" Grid.Column="1" Grid.Row="2" MaxHeight="50">
             <TextBox Text="{Binding LogsFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : C:\Users\Reneshi\Downloads\ErrorLogClient.txt" />
         </GroupBox>
-        <GroupBox Header="Excluded Extensions" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2">
-            <!--<TextBox Text="{Binding ExcludedExtensions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" />-->
+        <GroupBox Header="Excluded Extensions" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2">
             <ListBox ItemsSource="{Binding ExcludedExtensionsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
