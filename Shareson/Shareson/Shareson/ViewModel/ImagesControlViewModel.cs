@@ -142,17 +142,6 @@ namespace Shareson.ViewModel
             }
             set
             {
-                //if (value.Contains("/"))
-                //{
-                //    value = value.Replace("/", @"\");
-                //}
-
-                //var lastChar = value.LastIndexOf(@"\");
-                //if (lastChar > 0 && lastChar < value.Length && !value.EndsWith(@"\"))
-                //{
-                //    value += @"\";
-                //}
-
                 model._DirectoryPath = value;
                 NotifyPropertyChanged();
             }
