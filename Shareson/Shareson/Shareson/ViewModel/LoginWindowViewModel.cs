@@ -14,7 +14,7 @@ namespace Shareson.ViewModel
         private LoginWindowRepository repository;
         private Action closeLoginWindow;
 
-
+        InfoLog log;
         LoginControlViewModel LoginControlViewModel;
         Task Task_UpdateServerStatus;
 
@@ -138,40 +138,49 @@ namespace Shareson.ViewModel
             LoginWindowContentControl = LoginControlViewModel;
             InitializeTasks();
             Update();
+
+            log = new InfoLog(Properties.Settings.Default.LogsFilePath);
         }
 
         private void InitializeTasks()
         {
             Task_UpdateServerStatus = new Task(() =>
             {
-                do
+                try
                 {
-                    Data.ClientHelperModel.IsServerRun = ClientHelper.TestConnection().Result;
-                    IsCreateAccountAvailable = Data.ClientHelperModel.IsServerRun;
-                    //ServerStatus = result;
-
-                    if(Data.ClientHelperModel.IsServerRun == true)
+                    do
                     {
-                        if (LoginControlViewModel != null)
-                        {
-                            LoginControlViewModel.IsServerOn = true;
-                            LoginControlViewModel.LogInEnable = true;
-                            IsCreateAccountAvailable = true;
-                        }
-                    }
-                    else
-                    {
-                        if (LoginControlViewModel != null)
-                        {
-                            LoginControlViewModel.IsServerOn = false;
-                            LoginControlViewModel.LogInEnable = false;
-                            IsCreateAccountAvailable = false;
-                        }
-                    }
+                        Data.ClientHelperModel.IsServerRun = ClientHelper.TestConnection().Result;
+                        IsCreateAccountAvailable = Data.ClientHelperModel.IsServerRun;
 
-                    Thread.Sleep(5000);
+                        if (Data.ClientHelperModel.IsServerRun == true)
+                        {
+                            if (LoginControlViewModel != null)
+                            {
+                                LoginControlViewModel.IsServerOn = true;
+                                LoginControlViewModel.LogInEnable = true;
+                                IsCreateAccountAvailable = true;
+                            }
+                        }
+                        else
+                        {
+                            if (LoginControlViewModel != null)
+                            {
+                                LoginControlViewModel.IsServerOn = false;
+                                LoginControlViewModel.LogInEnable = false;
+                                IsCreateAccountAvailable = false;
+                            }
+                        }
+
+                        Thread.Sleep(5000);
+                    }
+                    while (ClientHelper.ContinueTestConnection == true);
                 }
-                while (ClientHelper.ContinueTestConnection == true);
+                catch(Exception e)
+                {
+                    log.Add(e.ToString());
+                }
+                
             });
         }
 

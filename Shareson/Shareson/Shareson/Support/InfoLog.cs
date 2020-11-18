@@ -23,15 +23,6 @@ namespace Shareson.Support
                 PathToFile = $@"\ErrorLogClient.txt";
                 PathToFile = PathToFile.Remove(0, 1);
             }
-
-            if(PathToDirectory == null)
-            {
-                PathToDirectory = @"C:\Users\Reneshi\Downloads";
-            }
-            //PathToDirectory = directory;
-            //PathToFile = file;
-
-            //PathToFileLog = directory + PathToFile;
         }
 
 

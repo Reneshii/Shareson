@@ -37,3 +37,46 @@ D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.csproj.CoreCompil
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.csproj.CopyComplete
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.exe
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csprojAssemblyReference.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\CustomControls\Button1.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\CustomControls\Button2.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ImageInfoControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\LoginWindow.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\AccountOptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ContactControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\CreateAccountControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ImageInfoControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ImagesControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\MainWindow.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\LimitedOptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\LoginControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ObservableCollectionControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\OptionsControl.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\App.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson_MarkupCompile.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson_MarkupCompile.lref
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe.config
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.xml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.xml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\LoginWindow.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\AccountOptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ContactControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\CreateAccountControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ImagesControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\MainWindow.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\LimitedOptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\LoginControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ObservableCollectionControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\OptionsControl.baml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.g.resources
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.Properties.Resources.resources
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.GenerateResource.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.CoreCompileInputs.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.CopyComplete

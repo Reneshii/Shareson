@@ -49,7 +49,7 @@
                 <StackPanel Name="AllFiles">
                     <GroupBox Header="Images Limit" BorderThickness="2" Margin="0,5,0,0">
                         <StackPanel>
-                            <TextBlock Text="Be carful with quantity!&#10;It consume a lot of memory !" FontSize="10" Foreground="Red"/>
+                            <TextBlock Text="Be carful with quantity!&#10;It consumes a lot of memory !" FontSize="10" Foreground="Red"/>
                             <TextBox Text="{Binding ImagesLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="130" HorizontalContentAlignment="Center" TextWrapping="Wrap" />
                         </StackPanel>
                     </GroupBox>

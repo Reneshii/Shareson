@@ -104,12 +104,7 @@ namespace Shareson.Support
                 Data.ClientHelperModel.clientSocket.EndConnect(AR);
                 //Socket client = (Socket)AR.AsyncState;
                 //client.EndConnect(AR);
-#if DEBUG
-                //MessageBox.Show("Client connected to : " + client.RemoteEndPoint.ToString());
-#endif
-#if !DEBUG
-                MessageBox.Show("Connected to server");
-#endif
+
                 connectDone.Set();
             }
             catch(Exception e)
