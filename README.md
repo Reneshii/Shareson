@@ -1,2 +1,2 @@
 # Shareson
-It is using to review photos or upload them.
+It's used for review/upload/download photos
