@@ -218,6 +218,7 @@ namespace Shareson.ViewModel
             observableCollectionViewModel.GetImageInfoWhileClick_Event += () =>
             {
                 InfoModel = observableCollectionViewModel.InfoModelFor_ImagesControlViewModel;
+                observableCollectionViewModel.InfoModelFor_ImagesControlViewModel = null;
             };
         }
         #endregion

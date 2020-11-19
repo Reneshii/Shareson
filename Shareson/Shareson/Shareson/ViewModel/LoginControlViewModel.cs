@@ -76,7 +76,7 @@ namespace Shareson.ViewModel
         {
             get
             {
-                return model._LogInEnable;
+                return model._LogInEnable = true;
             }
             set
             {

@@ -1,5 +1,4 @@
 ﻿using Shareson.Model;
-using Shareson.Repository;
 using Shareson.Support;
 using System.Windows.Input;
 
@@ -10,8 +9,6 @@ namespace Shareson.ViewModel
         MainWindowModel model;
         OptionsModel optionsModel;
         Data.AccountModel AccountModel;
-
-        MainWindowRepository repository;
 
         OptionsControlViewModel OptionsControlViewModel;
         ImagesControlViewModel imagesViewModel;
@@ -103,10 +100,8 @@ namespace Shareson.ViewModel
         }
         public void Initialize()
         {
-            
             model = new MainWindowModel();
             optionsModel = new OptionsModel();
-            repository = new MainWindowRepository();
             OptionsControlViewModel = new OptionsControlViewModel();
             imagesViewModel = new ImagesControlViewModel(AccountModel);
             accountOptionsViewModel = new AccountOptionsControlViewModel();

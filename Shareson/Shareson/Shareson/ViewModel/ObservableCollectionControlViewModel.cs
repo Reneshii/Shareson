@@ -2,7 +2,6 @@
 using Shareson.Model.ForViews;
 using Shareson.Repository;
 using Shareson.Support;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 

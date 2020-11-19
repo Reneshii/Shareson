@@ -152,13 +152,13 @@ namespace Shareson.ViewModel
                     {
                         Data.ClientHelperModel.IsServerRun = ClientHelper.TestConnection().Result;
                         IsCreateAccountAvailable = Data.ClientHelperModel.IsServerRun;
-
+                        
                         if (Data.ClientHelperModel.IsServerRun == true)
                         {
                             if (LoginControlViewModel != null)
                             {
                                 LoginControlViewModel.IsServerOn = true;
-                                LoginControlViewModel.LogInEnable = true;
+                                //LoginControlViewModel.LogInEnable = true;
                                 IsCreateAccountAvailable = true;
                             }
                         }
@@ -167,7 +167,7 @@ namespace Shareson.ViewModel
                             if (LoginControlViewModel != null)
                             {
                                 LoginControlViewModel.IsServerOn = false;
-                                LoginControlViewModel.LogInEnable = false;
+                                //LoginControlViewModel.LogInEnable = false;
                                 IsCreateAccountAvailable = false;
                             }
                         }

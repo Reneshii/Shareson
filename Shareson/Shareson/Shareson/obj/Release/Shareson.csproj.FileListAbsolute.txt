@@ -37,7 +37,13 @@ D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.csproj.CoreCompil
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.csproj.CopyComplete
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.exe
 D:\Serwer Treasures API\Shareson\Shareson\obj\Release\Shareson.pdb
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csprojAssemblyReference.cache
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe.config
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.pdb
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.dll
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.xml
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.xml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\CustomControls\Button1.baml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\CustomControls\Button2.baml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ImageInfoControl.baml
@@ -56,15 +62,6 @@ C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Releas
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson_MarkupCompile.cache
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson_MarkupCompile.lref
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.exe
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.pdb
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe.config
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.exe
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Shareson.pdb
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.dll
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.dll
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\Newtonsoft.Json.xml
-C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\bin\Release\WpfAnimatedGif.xml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\LoginWindow.baml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\AccountOptionsControl.baml
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\View\ViewControls\ContactControl.baml
@@ -80,3 +77,5 @@ C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Releas
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.GenerateResource.cache
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.CoreCompileInputs.cache
 C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.csproj.CopyComplete
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.exe
+C:\Users\Reneshi\Documents\GitHub\Shareson\Shareson\Shareson\Shareson\obj\Release\Shareson.pdb

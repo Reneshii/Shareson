@@ -27,10 +27,17 @@ namespace Shareson.Support
         {
             model.ipHostInfo = Dns.GetHostEntry(model.DNSorIP); 
             model.ipAddress = model.ipHostInfo.AddressList[0];
-            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
 
+            #region Local network
+            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
             Data.ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            //ClientHelperModel.clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+            #endregion
+
+            #region Internet
+            //model.remoteEP = new IPEndPoint(IPAddress.Parse(model.DNSorIP), model.PORT);
+            //Data.ClientHelperModel.clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            #endregion
+
             Data.ClientHelperModel.clientSocket.BeginConnect(model.remoteEP, new AsyncCallback(ConnectCallBack), Data.ClientHelperModel.clientSocket);
 
             connectDone.WaitOne();
