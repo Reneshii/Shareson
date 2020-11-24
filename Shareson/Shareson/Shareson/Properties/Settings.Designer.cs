@@ -81,5 +81,17 @@ namespace Shareson.Properties {
                 this["ExcludedExtensionsList"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConnectionMode {
+            get {
+                return ((bool)(this["ConnectionMode"]));
+            }
+            set {
+                this["ConnectionMode"] = value;
+            }
+        }
     }
 }

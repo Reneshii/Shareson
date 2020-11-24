@@ -29,13 +29,18 @@ namespace Shareson.Support
             model.ipAddress = model.ipHostInfo.AddressList[0];
 
             #region Local network
-            model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
-            Data.ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            if(Data.ClientHelperModel.ConnectionMode)
+            {
+                model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
+                Data.ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            }
             #endregion
-
             #region Internet
-            //model.remoteEP = new IPEndPoint(IPAddress.Parse(model.DNSorIP), model.PORT);
-            //Data.ClientHelperModel.clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            else
+            {
+                model.remoteEP = new IPEndPoint(IPAddress.Parse(model.DNSorIP), model.PORT);
+                Data.ClientHelperModel.clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            }
             #endregion
 
             Data.ClientHelperModel.clientSocket.BeginConnect(model.remoteEP, new AsyncCallback(ConnectCallBack), Data.ClientHelperModel.clientSocket);
@@ -64,9 +69,20 @@ namespace Shareson.Support
                 {
                     testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); 
                     testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
-                    testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT); 
-
-                    socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                    #region Local network
+                    if (Data.ClientHelperModel.ConnectionMode)
+                    {
+                        testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT);
+                        socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                    }
+                    #endregion
+                    #region Internet
+                    else
+                    {
+                        testModel.remoteEP = new IPEndPoint(IPAddress.Parse(testModel.DNSorIP), testModel.PORT);
+                        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    }
+                    #endregion
                     socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
                     socket.Connect(testModel.remoteEP);
 

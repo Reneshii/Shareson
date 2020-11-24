@@ -17,5 +17,8 @@
     <Setting Name="ExcludedExtensionsList" Type="System.Collections.ObjectModel.ObservableCollection&lt;Shareson.Model.Excluded&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ConnectionMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

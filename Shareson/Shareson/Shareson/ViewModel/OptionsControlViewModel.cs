@@ -65,6 +65,19 @@ namespace Shareson.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        public bool ConnectionMode
+        {
+            get
+            {
+                Data.ClientHelperModel.ConnectionMode = model._ConnectionMode;
+                return model._ConnectionMode;
+            }
+            set
+            {
+                model._ConnectionMode = value;
+                NotifyPropertyChanged();
+            }
+        }
         public string DNSorIP
         {
             get

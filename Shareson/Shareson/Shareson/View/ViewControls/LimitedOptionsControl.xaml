@@ -45,5 +45,14 @@
             <TextBox Text="{Binding LogsFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MaxHeight="20" ToolTip="e.g : (PC name : DESKTOP-SV0P890) or (IP : 49.250.45.49)" />
         </GroupBox>
         <Button Content="Save" Command="{Binding SaveSettings, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Button2}" Grid.Column="3" Grid.Row="3" />
+
+        <StackPanel Grid.Column="3" Grid.Row="2" MaxHeight="50" Orientation="Horizontal">
+            <Label Content="Use WLAN" VerticalAlignment="Center"/>
+            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding ConnectionMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -11,6 +11,7 @@ namespace Shareson.Repository
             Properties.Settings.Default.DNSorIP = tempModel._DNSorIP;
             Properties.Settings.Default.Port = tempModel._Port;
             Properties.Settings.Default.ExcludedExtensionsList = tempModel._ExcludedExtensionsList;
+            Properties.Settings.Default.ConnectionMode = tempModel._ConnectionMode;
 
             Properties.Settings.Default.Save();
         }
@@ -23,7 +24,7 @@ namespace Shareson.Repository
             model._DNSorIP = Properties.Settings.Default.DNSorIP;
             model._Port = Properties.Settings.Default.Port;
             model._ExcludedExtensionsList = Properties.Settings.Default.ExcludedExtensionsList;
-
+            model._ConnectionMode = Properties.Settings.Default.ConnectionMode;
             return model;
         }
 
@@ -34,7 +35,7 @@ namespace Shareson.Repository
             Properties.Settings.Default.DNSorIP = string.Empty;
             Properties.Settings.Default.Port = 0;
             Properties.Settings.Default.ExcludedExtensionsList.Clear();
-
+            Properties.Settings.Default.ConnectionMode = false;
 
             Properties.Settings.Default.Save();
         }

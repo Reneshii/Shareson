@@ -24,6 +24,7 @@ namespace Shareson.Model
         {
             public static Socket clientSocket { get; set; }
             public static bool IsServerRun { get; set; }
+            public static bool ConnectionMode { get; set; }
 
             public IPHostEntry ipHostInfo;
             public IPAddress ipAddress;

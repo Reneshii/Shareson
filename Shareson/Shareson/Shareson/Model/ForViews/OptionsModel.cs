@@ -9,6 +9,7 @@ namespace Shareson.Model
         public int _Port { get; set; }
         public string _DNSorIP { get; set; }
         public string _LogsFilePath { get; set; }
+        public bool _ConnectionMode { get; set; }
         public ObservableCollection<Excluded> _ExcludedExtensionsList { get; set; }
         public ICommand _SaveSettings { get; set; }
     }
