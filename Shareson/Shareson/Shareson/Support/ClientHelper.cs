@@ -29,7 +29,7 @@ namespace Shareson.Support
             model.ipAddress = model.ipHostInfo.AddressList[0];
 
             #region Local network
-            if(Data.ClientHelperModel.ConnectionMode)
+            if(Data.ClientHelperModel.ConnectionMode == false)
             {
                 model.remoteEP = new IPEndPoint(model.ipAddress, model.PORT);
                 Data.ClientHelperModel.clientSocket = new Socket(model.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -70,7 +70,7 @@ namespace Shareson.Support
                     testModel.ipHostInfo = Dns.GetHostEntry(testModel.DNSorIP); 
                     testModel.ipAddress = testModel.ipHostInfo.AddressList[0];
                     #region Local network
-                    if (Data.ClientHelperModel.ConnectionMode)
+                    if (Data.ClientHelperModel.ConnectionMode == false)
                     {
                         testModel.remoteEP = new IPEndPoint(testModel.ipAddress, testModel.PORT);
                         socket = new Socket(testModel.ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);

@@ -37,5 +37,8 @@ namespace Shareson.Repository.SupportMethods
 
             return bitMapImage;
         }
+
+       
+        
     }
 }
